@@ -1,33 +1,79 @@
 import RoomInWard from './RoomInWard';
 import Room from './InsideRoom/Room';
 import React, { useState } from 'react';
+import styled from './App.module.scss';
 
 const App = () => {
 
   const [roomsState, setRoomsState] = useState({
     rooms: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    openedRoom: null
+    openedRoom: false
   });
 
 const showRoom = () => {
+  const roomOpen = roomsState.openedRoom;
+  setRoomsState({openedRoom: !roomOpen});
 
 }
 
   return (
-    <div className="App">
+    <div className={styled.app}>
       <h1>CHIRURGIA OGÓLNA</h1>
+      <div className={styled.allRoom}>
       <RoomInWard roomNumber={roomsState.rooms[0]} />
-      <button>WEJDŹ NA SALĘ</button>
-      <Room />
+      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
+      { roomsState.openedRoom === true ?
+      <Room /> : null }
+      </div>
 
-      <RoomInWard roomNumber={roomsState.rooms[1]} />
-      <RoomInWard roomNumber={roomsState.rooms[2]} />
-      <RoomInWard roomNumber={roomsState.rooms[3]} />
-      <RoomInWard roomNumber={roomsState.rooms[4]} />
-      <RoomInWard roomNumber={roomsState.rooms[5]} />
-      <RoomInWard roomNumber={roomsState.rooms[6]} />
-      <RoomInWard roomNumber={roomsState.rooms[7]} />
-      <RoomInWard roomNumber={roomsState.rooms[8]} />
+        <div className={styled.allRoom}>
+      <RoomInWard roomNumber={roomsState.rooms[0]} />
+      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
+      { roomsState.openedRoom === true ?
+      <Room /> : null }
+      </div>
+      <div className={styled.allRoom}>
+      <RoomInWard roomNumber={roomsState.rooms[0]} />
+      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
+      { roomsState.openedRoom === true ?
+      <Room /> : null }
+      </div>
+      <div className={styled.allRoom}>
+      <RoomInWard roomNumber={roomsState.rooms[0]} />
+      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
+      { roomsState.openedRoom === true ?
+      <Room /> : null }
+      </div>
+      <div className={styled.allRoom}>
+      <RoomInWard roomNumber={roomsState.rooms[0]} />
+      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
+      { roomsState.openedRoom === true ?
+      <Room /> : null }
+      </div>
+      <div className={styled.allRoom}>
+      <RoomInWard roomNumber={roomsState.rooms[0]} />
+      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
+      { roomsState.openedRoom === true ?
+      <Room /> : null }
+      </div>
+      <div className={styled.allRoom}>
+      <RoomInWard roomNumber={roomsState.rooms[0]} />
+      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
+      { roomsState.openedRoom === true ?
+      <Room /> : null }
+      </div>
+      <div className={styled.allRoom}>
+      <RoomInWard roomNumber={roomsState.rooms[0]} />
+      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
+      { roomsState.openedRoom === true ?
+      <Room /> : null }
+      </div>
+      <div className={styled.allRoom}>
+      <RoomInWard roomNumber={roomsState.rooms[0]} />
+      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
+      { roomsState.openedRoom === true ?
+      <Room /> : null }
+      </div>
     </div>
   );
 }
