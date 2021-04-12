@@ -1,7 +1,10 @@
+
 .app {
+margin-right: 26px;
 display: flex;
-justify-content: space-between;
+justify-content: space-around;
 flex-flow: row wrap;
+overflow: hidden;
 }
 
 h1 {
@@ -14,9 +17,15 @@ h1 {
 }
 
 button {
-   
+    margin-bottom: 30px;
     height: 40px;
-    background-color: mediumblue;
-    color: aqua;
+    background-color: rgb(59, 59, 66);
+    color: rgb(213, 226, 226);
     font-size: 20px;
+    width: 120%;
+}
+
+button:hover {
+    opacity: 0.7;
+    cursor: grabbing;
 }

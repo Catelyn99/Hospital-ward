@@ -8,7 +8,7 @@ const RoomInWard = props => {
         <div className={styled.room} onClick={props.showRoom}>
             <p >SALA </p>
             <p>{props.roomNumber}</p>
-            <p className={styled.amountPatient}>Stan pacjentów: </p>
+            <p className={styled.amountPatient}>Stan pacjentów: 3</p>
         </div>
         )}
 

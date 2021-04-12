@@ -1,83 +1,77 @@
-import RoomInWard from './RoomInWard';
-import Room from './InsideRoom/Room';
 import React, { useState } from 'react';
 import styled from './App.module.scss';
+import RoomEntrance from './RoomsEntrance/RoomEntrance';
+import IntensiveRoomEntrance from './RoomsEntrance/IntensiveRoomEntrance';
+import OtherRoomEntrance from './RoomsEntrance/OtherRoomEntrance';
 
 const App = () => {
 
   const [roomsState, setRoomsState] = useState({
-    rooms: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    openedRoom: false
+    rooms: [
+      {
+        id: 1,
+        type: 'normal'
+      }, {
+        id: 2,
+        type: 'normal'
+      }, {
+        id: 3,
+        type: 'normal'
+      }, {
+        id: 4,
+        type: 'normal'
+      }, {
+        id: 5,
+        type: 'normal'
+      }, {
+        id: 6,
+        type: 'normal'
+      }, {
+        id: 7,
+        type: 'normal'
+      }, {
+        id: 'IZOLATKA',
+        type: 'izolation'
+      }, {
+        id: 'SIOM',
+        type: 'intensive'
+      }],
+    openedRoom: null
   });
 
-const showRoom = () => {
-  const roomOpen = roomsState.openedRoom;
-  setRoomsState({openedRoom: !roomOpen});
-
-}
+  const showRoom = (id) => {
+    setRoomsState({
+      openedRoom: roomsState.rooms.find(element => element.id === id),
+      rooms: roomsState.rooms
+    });
+  }
 
   return (
-    <div className={styled.app}>
-      <h1>CHIRURGIA OGÓLNA</h1>
-      <div className={styled.allRoom}>
-      <RoomInWard roomNumber={roomsState.rooms[0]} />
-      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
-      { roomsState.openedRoom === true ?
-      <Room /> : null }
+    <>
+      <div className={styled.app}>
+        <h1>CHIRURGIA OGÓLNA</h1>
+        {roomsState.rooms.map(element => {
+          switch (element.type){
+            case 'normal':
+              return (<RoomEntrance key={element.id} showRoom={() => showRoom(element.id)}
+              openedRoom={roomsState.openedRoom}
+              room={element} />);
+            case 'izolation':
+              return (<OtherRoomEntrance key={element.id} showRoom={() => showRoom(element.id)}
+            openedRoom={roomsState.openedRoom}
+            room={element} />);
+            case 'intensive':
+              return (<IntensiveRoomEntrance key={element.id} showRoom={() => showRoom(element.id)}
+            openedRoom={roomsState.openedRoom}
+            room={element} />);
+            default:
+              return null;
+          } 
+        })}
       </div>
-
-        <div className={styled.allRoom}>
-      <RoomInWard roomNumber={roomsState.rooms[0]} />
-      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
-      { roomsState.openedRoom === true ?
-      <Room /> : null }
-      </div>
-      <div className={styled.allRoom}>
-      <RoomInWard roomNumber={roomsState.rooms[0]} />
-      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
-      { roomsState.openedRoom === true ?
-      <Room /> : null }
-      </div>
-      <div className={styled.allRoom}>
-      <RoomInWard roomNumber={roomsState.rooms[0]} />
-      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
-      { roomsState.openedRoom === true ?
-      <Room /> : null }
-      </div>
-      <div className={styled.allRoom}>
-      <RoomInWard roomNumber={roomsState.rooms[0]} />
-      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
-      { roomsState.openedRoom === true ?
-      <Room /> : null }
-      </div>
-      <div className={styled.allRoom}>
-      <RoomInWard roomNumber={roomsState.rooms[0]} />
-      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
-      { roomsState.openedRoom === true ?
-      <Room /> : null }
-      </div>
-      <div className={styled.allRoom}>
-      <RoomInWard roomNumber={roomsState.rooms[0]} />
-      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
-      { roomsState.openedRoom === true ?
-      <Room /> : null }
-      </div>
-      <div className={styled.allRoom}>
-      <RoomInWard roomNumber={roomsState.rooms[0]} />
-      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
-      { roomsState.openedRoom === true ?
-      <Room /> : null }
-      </div>
-      <div className={styled.allRoom}>
-      <RoomInWard roomNumber={roomsState.rooms[0]} />
-      <button onClick={showRoom}>WEJDŹ NA SALĘ</button>
-      { roomsState.openedRoom === true ?
-      <Room /> : null }
-      </div>
-    </div>
+    </>
   );
 }
-
 
 export default App;
 
