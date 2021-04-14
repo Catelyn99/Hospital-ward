@@ -7,9 +7,8 @@ const RoomEntrance = (props) => {
         <>
             {
                 props.openedRoom === null ?
-                    <div>
+                    <div onClick={props.showRoom}>
                         <IntensiveRoomInWard roomNumber={props.room.id} />
-                        <button onClick={props.showRoom}>WEJDŹ NA SALĘ</button>
                     </div> :
                     props.openedRoom === props.room ?
                         <Room /> : null

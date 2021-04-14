@@ -3,6 +3,7 @@ import styled from './PatientInRoom.module.scss';
 const PatientInRoom = (props) => {
 
         return (
+
             <div>
                 <div className={styled.patientBed}>
                    <p>Pacjent: {props.name}</p>

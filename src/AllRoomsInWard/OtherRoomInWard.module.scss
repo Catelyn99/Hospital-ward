@@ -1,13 +1,22 @@
 $dark-color: rgb(2, 61, 10);
 
 .room {
-    width: 120%;
     height: 260px;
     background-color: rgb(9, 255, 0);
     border: 3px solid $dark-color;
     margin-top: 30px 0 10px;
     border-radius: 5%;
 }
+
+.room:hover {
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 6px;
+    background-color:  rgb(158, 247, 118);
+    text-transform: uppercase;
+ }
 
 .name {
     text-align: center;
