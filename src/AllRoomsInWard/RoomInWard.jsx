@@ -1,14 +1,14 @@
 import React from 'react';
-import styled from './RoomInWard.module.scss';
+import style from './RoomInWard.module.scss';
 
 
 const RoomInWard = props => {
 
         return (
-        <div className={styled.room}>
+        <div className={style.room}>
             <p >SALA </p>
             <p>{props.roomNumber}</p>
-            <p className={styled.amountPatient}>Stan pacjentów: 3</p>
+            <p className={style.amountPatient}>Stan pacjentów: 3</p>
             </div>
         )}
 

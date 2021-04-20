@@ -9,13 +9,10 @@ $dark-color: rgb(2, 61, 10);
 }
 
 .room:hover {
-    font-weight: 400;
-    letter-spacing: 0.5px;
     transition: all 0.3s ease;
     cursor: pointer;
     border-radius: 6px;
     background-color:  rgb(158, 247, 118);
-    text-transform: uppercase;
  }
 
 .name {

@@ -1,5 +1,21 @@
 .patientBed {
-    background-color: blue;
-    width: 30%;
-    height: 240px;
+    background-color: rgb(169, 169, 248);
+    width: 92%;
+    border: 2px solid black;
+}
+
+input {
+    width: 45%;
+    height: 25px;
+}
+
+.inputAge {
+    float: right;
+}
+
+@media (max-width: 768px) {
+    input {
+        width: 40%;
+        height: 20px;
+    }
 }
