@@ -1,5 +1,4 @@
 $primary-color: rgb(33, 33, 83);
-
 .room {
     height: 260px;
     background-color: rgb(93, 236, 236);
@@ -9,14 +8,12 @@ $primary-color: rgb(33, 33, 83);
 }
 
 .room:hover {
-    font-weight: 400;
-    letter-spacing: 0.5px;
     transition: all 0.3s ease;
     cursor: pointer;
     border-radius: 6px;
-    background-color:  rgb(186, 244, 248);
-    text-transform: uppercase;
- }
+    color: aliceblue;
+    background-color: rgb(159, 183, 197);
+}
 
 p {
     text-align: center;
@@ -29,4 +26,18 @@ p {
 .amountPatient {
     text-align: center;
     font-size: 30px;
+}
+
+@media (max-width: 768px) {
+    p,
+    .amountPatient {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 992px) {
+    p,
+    .amountPatient {
+        font-size: 25px;
+    }
 }
