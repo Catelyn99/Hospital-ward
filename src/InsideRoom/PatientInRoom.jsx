@@ -4,7 +4,7 @@ const PatientInRoom = (props) => {
 
         return (
 
-            <div>
+            <div onClick={() => props.showPatientInfo(props.id)}>
                 <div className={styled.patientBed}>
                    <p>Pacjent: {props.name}</p>
                    <p>Wiek: {props.age}</p>
