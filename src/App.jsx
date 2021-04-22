@@ -3,7 +3,7 @@ import styled from './App.module.scss';
 import RoomEntrance from './RoomsEntrance/RoomEntrance';
 import IntensiveRoomEntrance from './RoomsEntrance/IntensiveRoomEntrance';
 import OtherRoomEntrance from './RoomsEntrance/OtherRoomEntrance';
-
+import Title from './Title';
 const App = () => {
 
   const [roomsState, setRoomsState] = useState({
@@ -39,7 +39,7 @@ const App = () => {
     openedRoom: null
   });
 
-  const showRoom = (id) => {
+  const showRoom = id => {
     setRoomsState({
       openedRoom: roomsState.rooms.find(element => element.id === id),
       rooms: roomsState.rooms
@@ -49,24 +49,24 @@ const App = () => {
   return (
     <>
       <div className={styled.app}>
-        <h1>CHIRURGIA OGÓLNA</h1>
+        <Title />
         {roomsState.rooms.map(element => {
-          switch (element.type){
+          switch (element.type) {
             case 'normal':
               return (<RoomEntrance key={element.id} showRoom={() => showRoom(element.id)}
-              openedRoom={roomsState.openedRoom}
-              room={element} />);
+                openedRoom={roomsState.openedRoom}
+                room={element} />);
             case 'izolation':
               return (<OtherRoomEntrance key={element.id} showRoom={() => showRoom(element.id)}
-            openedRoom={roomsState.openedRoom}
-            room={element} />);
+                openedRoom={roomsState.openedRoom}
+                room={element} />);
             case 'intensive':
               return (<IntensiveRoomEntrance key={element.id} showRoom={() => showRoom(element.id)}
-            openedRoom={roomsState.openedRoom}
-            room={element} />);
+                openedRoom={roomsState.openedRoom}
+                room={element} />);
             default:
               return null;
-          } 
+          }
         })}
       </div>
     </>

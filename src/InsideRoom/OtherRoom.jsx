@@ -36,33 +36,14 @@ const Room = () => {
           persons: newPersons
         });
       }
-      const showPatientInfo = (id) => {
-        setPersonsState({
-          showPersons: personsState.rooms.find(element => element.id === id),
-          persons: personsState.rooms
-        });
-      }
+    
 
     return (
         <>
-            <PatientInRoom onClick={() => showPatientInfo(personsState.persons.id)}
+            <PatientInRoom
                 name={personsState.persons[0].name}
                 age={personsState.persons[0].age}
                 id={personsState.persons[0].id}
-                changedName={changePatientName} 
-                changedAge={changePatientAge} />
-
-            <PatientInRoom
-                name={personsState.persons[1].name}
-                age={personsState.persons[1].age}
-                id={personsState.persons[1].id}
-                changedName={changePatientName} 
-                changedAge={changePatientAge} />
-
-            <PatientInRoom
-                name={personsState.persons[2].name}
-                age={personsState.persons[2].age}
-                id={personsState.persons[2].id}
                 changedName={changePatientName} 
                 changedAge={changePatientAge} />
         </>

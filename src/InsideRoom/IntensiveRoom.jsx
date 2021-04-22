@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import PatientInRoom from './PatientInRoom';
 
-const Room = () => {
+const IntensiveRoom = () => {
     const [personsState, setPersonsState] = useState({
         persons: [
           { name: "BRAK", age: "0", id: 1 },
@@ -36,16 +36,11 @@ const Room = () => {
           persons: newPersons
         });
       }
-      const showPatientInfo = (id) => {
-        setPersonsState({
-          showPersons: personsState.rooms.find(element => element.id === id),
-          persons: personsState.rooms
-        });
-      }
+    
 
     return (
         <>
-            <PatientInRoom onClick={() => showPatientInfo(personsState.persons.id)}
+            <PatientInRoom
                 name={personsState.persons[0].name}
                 age={personsState.persons[0].age}
                 id={personsState.persons[0].id}
@@ -58,15 +53,8 @@ const Room = () => {
                 id={personsState.persons[1].id}
                 changedName={changePatientName} 
                 changedAge={changePatientAge} />
-
-            <PatientInRoom
-                name={personsState.persons[2].name}
-                age={personsState.persons[2].age}
-                id={personsState.persons[2].id}
-                changedName={changePatientName} 
-                changedAge={changePatientAge} />
         </>
     );
 }
 
-export default Room;
+export default IntensiveRoom;
