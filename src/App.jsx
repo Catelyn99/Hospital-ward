@@ -3,6 +3,7 @@ import styled from './App.module.scss';
 import RoomEntrance from './RoomsEntrance/RoomEntrance';
 import IntensiveRoomEntrance from './RoomsEntrance/IntensiveRoomEntrance';
 import OtherRoomEntrance from './RoomsEntrance/OtherRoomEntrance';
+import Title from './title';
 
 const App = () => {
 
@@ -49,7 +50,7 @@ const App = () => {
   return (
     <>
       <div className={styled.app}>
-        <h1>CHIRURGIA OGÓLNA</h1>
+        <Title />
         {roomsState.rooms.map(element => {
           switch (element.type){
             case 'normal':

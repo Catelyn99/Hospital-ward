@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Patient from '../AboutPatient/Patient';
 import PatientInRoom from './PatientInRoom';
 
-const Room = () => {
+const IntensiveRoom = () => {
   const [personsState, setPersonsState] = useState({
     persons: [
       { name: "BRAK", age: "0", id: 1 },
@@ -72,22 +72,8 @@ const Room = () => {
           <Patient patient={personsState.persons[1]} /> : null
       }
 
-
-      <PatientInRoom showPatientInfo={showPatientInfo}
-        name={personsState.persons[2].name}
-        age={personsState.persons[2].age}
-        id={personsState.persons[2].id}
-        changedName={changePatientName}
-        changedAge={changePatientAge} />
-
-      {
-        personsState.showPersons !== null &&
-          personsState.showPersons.id === personsState.persons[2].id ?
-          <Patient patient={personsState.persons[2]} /> : null
-      }
-
     </>
   );
 }
 
-export default Room;
+export default IntensiveRoom;

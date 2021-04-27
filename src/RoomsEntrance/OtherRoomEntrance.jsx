@@ -1,5 +1,5 @@
 import OtherRoomInWard from '../AllRoomsInWard/OtherRoomInWard';
-import Room from '../InsideRoom/Room';
+import OtherRoom from '../InsideRoom/OtherRoom';
 
 const OtherRoomEntrance = (props) => {
     return (
@@ -10,7 +10,7 @@ const OtherRoomEntrance = (props) => {
                         <OtherRoomInWard roomNumber={props.room.id} />
                     </div> :
                     props.openedRoom === props.room ?
-                        <Room /> : null
+                        <OtherRoom /> : null
             }
         </>
     );
