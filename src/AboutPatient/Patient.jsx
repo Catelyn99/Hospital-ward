@@ -7,10 +7,10 @@ const Patient = (props) => {
         <div onClick={props.showPatientInfo}>
         <button className={styling.newPatient}></button>
         <div className={styling.name}>
-           <span>{props.patient.name}</span> 
+        <input type="text" onChange={(event) => props.changedName(event, props.id)} />
         </div>
          <div className={styling.age}>
-             <span>{props.patient.age}</span>
+         <input type="text" onChange={(event) => props.changedAge(event, props.id)} />
          </div>
          <div className={styling.diagnosis}>
              <button className={styling.newDiagnosis}>Zmień diagnozę</button>

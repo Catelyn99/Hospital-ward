@@ -36,6 +36,7 @@ const Room = () => {
       persons: newPersons
     });
   }
+  
   const showPatientInfo = (id) => {
     setPersonsState({
       showPersons: personsState.persons.find(element => element.id === id),
