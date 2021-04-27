@@ -1,5 +1,5 @@
 import IntensiveRoomInWard from "../AllRoomsInWard/IntensiveRoomInWard";
-import Room from "../InsideRoom/Room";
+import IntensiveRoom from "../InsideRoom/IntensiveRoom";
 
 
 const RoomEntrance = (props) => {
@@ -11,7 +11,7 @@ const RoomEntrance = (props) => {
                         <IntensiveRoomInWard roomNumber={props.room.id} />
                     </div> :
                     props.openedRoom === props.room ?
-                        <Room /> : null
+                        <IntensiveRoom /> : null
             }
         </>
     );
