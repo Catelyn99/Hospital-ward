@@ -28,7 +28,6 @@ const Room = () => {
   }
 
   const saveInfo = (info) => {
-    console.log(info);
     const persons = personsState.persons.map(person => {
       if (person.id === info.id) {
         return info;
