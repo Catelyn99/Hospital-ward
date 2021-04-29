@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Hospital-ward/static/css/main.3e92da0d.chunk.css",
-    "main.js": "/Hospital-ward/static/js/main.68b041ea.chunk.js",
-    "main.js.map": "/Hospital-ward/static/js/main.68b041ea.chunk.js.map",
+    "main.js": "/Hospital-ward/static/js/main.d450f51c.chunk.js",
+    "main.js.map": "/Hospital-ward/static/js/main.d450f51c.chunk.js.map",
     "runtime-main.js": "/Hospital-ward/static/js/runtime-main.d35958a9.js",
     "runtime-main.js.map": "/Hospital-ward/static/js/runtime-main.d35958a9.js.map",
     "static/js/2.82171c61.chunk.js": "/Hospital-ward/static/js/2.82171c61.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.d35958a9.js",
     "static/js/2.82171c61.chunk.js",
     "static/css/main.3e92da0d.chunk.css",
-    "static/js/main.68b041ea.chunk.js"
+    "static/js/main.d450f51c.chunk.js"
   ]
 }
