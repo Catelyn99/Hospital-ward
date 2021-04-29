@@ -2,18 +2,14 @@ import styled from './PatientInRoom.module.scss';
 
 const PatientInRoom = (props) => {
 
-        return (
+    return (
 
-            <div onClick={() => props.showPatientInfo(props.id)}>
-                <div className={styled.patientBed}>
-                   <p>Pacjent: {props.name}</p>
-                   <p>Wiek: {props.age}</p>
-                   <input className={styled.inputName} type="text" onChange={(event) => props.changedName(event, props.id)} />
-                   <input className={styled.inputAge} type="text" onChange={(event) => props.changedAge(event, props.id)} />
-                </div>
+        <div onClick={() => props.showPatientInfo(props.id)}>
+            <div className={styled.patientBed}>
+                <p className={styled.p}>Pacjent: {props.name}</p>
+                <p className={styled.p}>Wiek: {props.age}</p>
             </div>
-        )
+        </div>
+    )
     }
-
-
 export default PatientInRoom;
