@@ -38,10 +38,18 @@ const Room = () => {
   }
   
   const showPatientInfo = (id) => {
-    setPersonsState({
-      showPersons: personsState.persons.find(element => element.id === id),
+    const selectedPerson = personsState.persons.find(element => element.id === id);
+    if (personsState.showPersons !== selectedPerson){
+     setPersonsState({
+      showPersons: selectedPerson,
       persons: personsState.persons
     });
+  } else {
+    setPersonsState({
+      showPersons: null,
+      persons: personsState.persons
+    });
+  }
   }
 
   return (

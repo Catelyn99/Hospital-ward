@@ -1,5 +1,5 @@
 import React from 'react';
-import styling from './Patient.scss';
+import styling from './Patient.module.scss';
 
 const Patient = (props) => {
 
