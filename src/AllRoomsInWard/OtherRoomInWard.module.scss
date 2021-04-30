@@ -1,10 +1,15 @@
-$dark-color: rgb(2, 61, 10);
+$dark-green: rgb(2, 61, 10);
 .room {
+    margin: 10% 2% 2% 10%;
     height: 260px;
     background-color: rgb(9, 255, 0);
-    border: 3px solid $dark-color;
-    margin-top: 30px 0 10px;
-    border-radius: 5%;
+    border: 3px solid $dark-green;
+    border-radius: 6px;
+    text-align: center;
+    color: $dark-green;
+    font-weight: 500;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .room:hover {
@@ -14,53 +19,21 @@ $dark-color: rgb(2, 61, 10);
     background-color: rgb(158, 247, 118);
 }
 
-.room>p {
-    text-align: center;
-    color: $dark-color;
-    font-weight: 500;
-    font-size: 38px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
 .amountPatient {
     text-align: center;
     font-size: 30px;
 }
 
-.namePhone {
-    display: none;
-}
-
-@media (max-width: 510px) {
-    .namePhone {
-        display: block;
-        font-size: 18px;
-    }
-    .name {
-        display: none;
-    }
-    .amountPatient {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .room>p,
+@media (max-width: 780px) {
+    .room,
     .amountPatient {
         font-size: 18px;
     }
 }
 
 @media (max-width: 920px) {
-    .room>p,
+    .room,
     .amountPatient {
         font-size: 25px;
-    }
-}
-
-@media (max-width: 1120px) {
-    .room>p,
-    .amountPatient {
-        font-size: 29px;
     }
 }

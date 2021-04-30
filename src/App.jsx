@@ -49,8 +49,8 @@ const App = () => {
 
   return (
     <>
-      <div className={styled.app}>
         <Title />
+      <div className={styled.container}>
         {roomsState.rooms.map(element => {
           switch (element.type){
             case 'normal':
