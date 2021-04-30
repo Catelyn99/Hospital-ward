@@ -1,26 +1,21 @@
 $primary-color: rgb(33, 33, 83);
 .room {
     height: 260px;
-    background-color: rgb(93, 236, 236);
+    margin: 10% 2% 2% 10%;
+    border-radius: 6px;
+    color: $primary-color;
+    background-color: rgb(159, 183, 197);
     border: 3px solid $primary-color;
-    margin-top: 30px 0 10px;
-    border-radius: 5%;
+    text-align: center;
+    font-weight: 500;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .room:hover {
     transition: all 0.3s ease;
     cursor: pointer;
-    border-radius: 6px;
-    color: aliceblue;
-    background-color: rgb(159, 183, 197);
-}
-
-.room>p {
-    text-align: center;
-    color: $primary-color;
-    font-weight: 500;
-    font-size: 38px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: aliceblue;
 }
 
 .amountPatient {
@@ -28,29 +23,16 @@ $primary-color: rgb(33, 33, 83);
     font-size: 30px;
 }
 
-@media (max-width: 510px) {
-    .amountPatient {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .room>p,
+@media (max-width: 780px) {
+    .room,
     .amountPatient {
         font-size: 18px;
     }
 }
 
 @media (max-width: 920px) {
-    .room>p,
+    .room,
     .amountPatient {
         font-size: 25px;
-    }
-}
-
-@media (max-width: 1120px) {
-    .room>p,
-    .amountPatient {
-        font-size: 29px;
     }
 }

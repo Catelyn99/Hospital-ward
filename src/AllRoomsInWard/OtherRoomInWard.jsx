@@ -7,7 +7,6 @@ const OtherRoomInWard = props => {
         return (
         <div className={changes.room} onClick={props.showRoom}>
             <p className={changes.name}>{props.roomNumber}</p>
-            <p className={changes.namePhone}>IZOL</p>
             <p className={changes.amountPatient}>Stan pacjentów: 1</p>
         </div>
         )}
