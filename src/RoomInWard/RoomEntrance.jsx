@@ -1,16 +1,20 @@
-import RoomInWard from "../AllRoomsInWard/RoomInWard";
+import RoomInWard from "./RoomInWard";
 import Room from "../InsideRoom/Room";
-import PatientsContext from "../contex/PatientsContext"
+import PatientsContext from "../Contexts/PatientsContext"
 import { useState } from "react";
 
 const RoomEntrance = (props) => {
 
+  const setPersons = () => {
+    const patients = [];
+    for (let a=1; a<=props.room.amount; a++){
+      patients.push({ name: null, age: null, diagnosis: null, comments: null, tasks: null, id: a });
+    }
+    return patients;
+  }
+
   const [personsState, setPersonsState] = useState({
-    persons: [
-      { name: null, age: null, diagnosis: null, comments: null, tasks: null, id: 1 },
-      { name: null, age: null, diagnosis: null, comments: null, tasks: null, id: 2 },
-      { name: null, age: null, diagnosis: null, comments: null, tasks: null, id: 3 }
-    ],
+    persons: setPersons(),
     showPersons: null,
   });
 
@@ -48,13 +52,14 @@ const RoomEntrance = (props) => {
 
     return (
         <PatientsContext.Provider value={{
-          showPatientInfo:  showPatientInfo,
+          showPatientInfo: showPatientInfo,
           saveInfo: saveInfo
         }}>
             {
                 props.openedRoom === null ?
                     <div onClick={props.showRoom}>
                         <RoomInWard roomNumber={props.room.id}
+                        roomType={props.room.type}
                         checkAmountOfPatients={checkAmountOfPatients()} />
                     </div> :
                     props.openedRoom === props.room ?

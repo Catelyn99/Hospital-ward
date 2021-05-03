@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import PatientsContext from '../contex/PatientsContext';
+import PatientsContext from '../Contexts/PatientsContext';
 
 const Patient = (props) => {
     const patients = useContext(PatientsContext);
