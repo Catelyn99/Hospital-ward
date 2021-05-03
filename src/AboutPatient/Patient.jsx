@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import PatientsContext from '../contex/PatientsContext';
 
 const Patient = (props) => {
+    const patients = useContext(PatientsContext);
+
     const [formState, setFormState] = useState({
         ...props.patient
     });
@@ -17,7 +20,7 @@ const Patient = (props) => {
 
     const saveForm = (event) => {
         event.preventDefault();
-        props.saveInfo(formState);
+        patients.saveInfo(formState);
     }
 
     return (
