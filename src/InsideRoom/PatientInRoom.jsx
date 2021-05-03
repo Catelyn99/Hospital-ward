@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import PatientsContext from '../contex/PatientsContext';
+import PatientsContext from '../Contexts/PatientsContext';
 import styled from './PatientInRoom.module.scss';
 
 const PatientInRoom = (props) => {

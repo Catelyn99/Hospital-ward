@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import styled from './App.module.scss';
-import RoomEntrance from './RoomsEntrance/RoomEntrance';
-import IntensiveRoomEntrance from './RoomsEntrance/IntensiveRoomEntrance';
-import OtherRoomEntrance from './RoomsEntrance/OtherRoomEntrance';
-import Title from './title';
+import RoomEntrance from './RoomInWard/RoomEntrance';
+import Title from './Header/Title';
 
 const App = () => {
 
@@ -11,31 +9,40 @@ const App = () => {
     rooms: [
       {
         id: 1,
-        type: 'normal'
+        type: 'normal',
+        amount: 3
       }, {
         id: 2,
-        type: 'normal'
+        type: 'normal',
+        amount: 3
       }, {
         id: 3,
-        type: 'normal'
+        type: 'normal',
+        amount: 3
       }, {
         id: 4,
-        type: 'normal'
+        type: 'normal',
+        amount: 3
       }, {
         id: 5,
-        type: 'normal'
+        type: 'normal',
+        amount: 3
       }, {
         id: 6,
-        type: 'normal'
+        type: 'normal',
+        amount: 3
       }, {
         id: 7,
-        type: 'normal'
+        type: 'normal',
+        amount: 3
       }, {
         id: 'IZOLATKA',
-        type: 'izolation'
+        type: 'isolation',
+        amount: 1
       }, {
         id: 'SIOM',
-        type: 'intensive'
+        type: 'intensive',
+        amount: 2
       }],
     openedRoom: null
   });
@@ -52,22 +59,9 @@ const App = () => {
         <Title />
       <div className={styled.container}>
         {roomsState.rooms.map(element => {
-          switch (element.type){
-            case 'normal':
-              return (<RoomEntrance key={element.id} showRoom={() => showRoom(element.id)}
-              openedRoom={roomsState.openedRoom}
-              room={element} />);
-            case 'izolation':
-              return (<OtherRoomEntrance key={element.id} showRoom={() => showRoom(element.id)}
-            openedRoom={roomsState.openedRoom}
-            room={element} />);
-            case 'intensive':
-              return (<IntensiveRoomEntrance key={element.id} showRoom={() => showRoom(element.id)}
-            openedRoom={roomsState.openedRoom}
-            room={element} />);
-            default:
-              return null;
-          } 
+         return <RoomEntrance key={element.id} showRoom={() => showRoom(element.id)}
+         openedRoom={roomsState.openedRoom}
+         room={element} />
         })}
       </div>
     </>

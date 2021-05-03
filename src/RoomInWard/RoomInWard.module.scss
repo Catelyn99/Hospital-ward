@@ -1,0 +1,64 @@
+$primary-color: rgb(33, 33, 83);
+$isolation-color: rgb(2, 61, 10);
+$intensive-color: rgb(58, 8, 8);
+.room {
+    height: 260px;
+    margin: 10% 2% 2% 10%;
+    border-radius: 6px;
+    text-align: center;
+    border-width: 3px;
+    border-style: solid;
+    font-weight: 500;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    &:hover {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+}
+
+.roomPrimary {
+    border-color: $primary-color;
+    background-color: rgb(139, 183, 209);
+    color: $primary-color;
+    &:hover {
+        background-color: aliceblue;
+    }
+}
+
+.roomIntensive {
+    border-color: $intensive-color;
+    background-color: rgb(235, 35, 35);
+    color: $intensive-color;
+    &:hover {
+        background-color: rgb(226, 92, 92);
+    }
+}
+
+.roomIsolation {
+    background-color: rgb(9, 255, 0);
+    border-color: $isolation-color;
+    color: $isolation-color;
+    &:hover {
+        background-color: rgb(158, 247, 118);
+    }
+}
+
+.amountPatient {
+    text-align: center;
+    font-size: 30px;
+}
+
+@media (max-width: 780px) {
+    .room,
+    .amountPatient {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 920px) {
+    .room,
+    .amountPatient {
+        font-size: 25px;
+    }
+}
