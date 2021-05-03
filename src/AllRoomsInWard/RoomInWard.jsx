@@ -8,7 +8,7 @@ const RoomInWard = props => {
         <div className={style.room}>
             <p >SALA </p>
             <p>{props.roomNumber}</p>
-            <p className={style.amountPatient}>Stan pacjentów: 3</p>
+            <p className={style.amountPatient}>Stan pacjentów: {props.checkAmountOfPatients}</p>
             </div>
         )}
 
