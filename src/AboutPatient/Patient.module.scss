@@ -1,0 +1,26 @@
+$bed-color: #a9a9f8;
+.form {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+input {
+    width: 50%;
+    height: 25px;
+    float: right;
+}
+
+.submit {
+    margin-top: 10px;
+    width: 100%;
+    &:hover {
+        background-color: $bed-color;
+        cursor: grab;
+    }
+}
+
+.headerBed {
+    text-align: center;
+    color: $bed-color;
+    margin-bottom: 10px;
+}

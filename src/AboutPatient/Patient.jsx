@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import PatientsContext from '../Contexts/PatientsContext';
+import styled from './Patient.module.scss';
 
 const Patient = (props) => {
     const patients = useContext(PatientsContext);
@@ -24,7 +25,9 @@ const Patient = (props) => {
     }
 
     return (
-        <form onSubmit={saveForm}>
+        <form className={styled.form} onSubmit={saveForm}>
+            {props.patient.name === null ? <div className={styled.headerBed}>Stwórz pacjenta</div> : 
+            <div className={styled.headerBed}>Edytuj pacjenta</div>}
             <label>
                 Imię i nazwisko:
         <input name="name" type="text" value={formState.name} onChange={handleInputChange} />
@@ -45,7 +48,7 @@ const Patient = (props) => {
                 Zlecenia:
              <input name="tasks" type="textarea" value={formState.tasks} onChange={handleInputChange} />
             </label>
-            <input type="submit" value="ZAPISZ" />
+            <input className={styled.submit} type="submit" value="ZAPISZ" />
         </form>
     )
 }
