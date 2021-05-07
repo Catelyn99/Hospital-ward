@@ -6,7 +6,8 @@ $bed-color: #a9a9f8;
 
 input {
     width: 50%;
-    height: 25px;
+    font-size: 12px;
+    height: 30%;
     float: right;
 }
 
@@ -23,4 +24,20 @@ input {
     text-align: center;
     color: $bed-color;
     margin-bottom: 10px;
+}
+
+.headerClean {
+    width: 25%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    text-align: center;
+    border: 2px solid $bed-color;
+    padding: 2px;
+    background-color: $bed-color;
+    font-weight: 500;
+    &:hover {
+        cursor: grab;
+        background-color: white;
+        color: $bed-color;
+    }
 }

@@ -24,10 +24,15 @@ const Patient = (props) => {
         patients.saveInfo(formState);
     }
 
+    const cleanPatient = () => {
+        patients.cleanInfo(formState);
+    }
+
     return (
         <form className={styled.form} onSubmit={saveForm}>
             {props.patient.name === null ? <div className={styled.headerBed}>Stwórz pacjenta</div> : 
-            <div className={styled.headerBed}>Edytuj pacjenta</div>}
+            <><button onClick={cleanPatient} className={styled.headerClean}>Wyczyść</button>
+            <div className={styled.headerBed}>Edytuj pacjenta</div></>}
             <label>
                 Imię i nazwisko:
         <input name="name" type="text" value={formState.name} onChange={handleInputChange} />

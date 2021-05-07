@@ -47,13 +47,33 @@ const RoomEntrance = (props) => {
     });
   }
 
+const cleanInfo = (info) => {
+  const persons = personsState.persons.map(person => {
+    if (person.id === info.id) {
+   info.name = ' ';
+   info.age = ' ';
+   info.diagnosis = ' ';
+   info.tasks = ' ';
+   info.comments = ' ';
+   return info;
+  } 
+  return person;
+});
+
+  setPersonsState({
+    ...personsState,
+    persons: persons
+});
+}
+
   const checkAmountOfPatients = () => personsState.persons.filter(person => person.name !== null).length;
 
 
     return (
         <PatientsContext.Provider value={{
           showPatientInfo: showPatientInfo,
-          saveInfo: saveInfo
+          saveInfo: saveInfo,
+          cleanInfo: cleanInfo
         }}>
             {
                 props.openedRoom === null ?
