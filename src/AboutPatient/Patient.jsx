@@ -26,6 +26,14 @@ const Patient = (props) => {
 
     const cleanPatient = () => {
         patients.cleanInfo(formState);
+        setFormState({
+            ...formState,
+            name: '',
+            age: '',
+            diagnosis: '',
+            comments: '',
+            tasks: ''
+        });
     }
 
     return (
@@ -35,23 +43,23 @@ const Patient = (props) => {
             <div className={styled.headerBed}>Edytuj pacjenta</div></>}
             <label>
                 Imię i nazwisko:
-        <input name="name" type="text" value={formState.name} onChange={handleInputChange} />
+        <input required name="name" type="text" value={formState.name} onChange={handleInputChange} />
             </label>
             <label>
                 Wiek:
-         <input name="age" type="number" value={formState.age} onChange={handleInputChange} />
+         <input name="age" type="number" min="0" value={formState.age} onChange={handleInputChange} />
             </label>
             <label>
                 Diagnoza lekarska:
-        <input name="diagnosis" type="textarea" value={formState.diagnosis} onChange={handleInputChange} />
+        <textarea name="diagnosis" cols="5" value={formState.diagnosis} onChange={handleInputChange} />
             </label>
             <label>
                 Uwagi:
-             <input name="comments" type="textarea" value={formState.comments} onChange={handleInputChange} />
+             <textarea name="comments" cols="150" value={formState.comments} onChange={handleInputChange} />
             </label>
             <label>
                 Zlecenia:
-             <input name="tasks" type="textarea" value={formState.tasks} onChange={handleInputChange} />
+             <textarea name="tasks"value={formState.tasks} onChange={handleInputChange} />
             </label>
             <input className={styled.submit} type="submit" value="ZAPISZ" />
         </form>
