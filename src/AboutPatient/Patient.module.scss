@@ -4,7 +4,8 @@ $bed-color: #a9a9f8;
     flex-flow: column wrap;
 }
 
-input {
+input,
+textarea {
     width: 50%;
     font-size: 12px;
     height: 30%;

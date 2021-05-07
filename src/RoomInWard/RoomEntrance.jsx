@@ -50,11 +50,9 @@ const RoomEntrance = (props) => {
 const cleanInfo = (info) => {
   const persons = personsState.persons.map(person => {
     if (person.id === info.id) {
-   info.name = ' ';
-   info.age = ' ';
-   info.diagnosis = ' ';
-   info.tasks = ' ';
-   info.comments = ' ';
+      Object.entries(info).forEach(([key, value]) => {
+        info[key] = key !== 'id' ? null : value;
+      });
    return info;
   } 
   return person;
