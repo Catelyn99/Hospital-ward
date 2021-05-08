@@ -43,23 +43,23 @@ const Patient = (props) => {
             <div className={styled.headerBed}>Edytuj pacjenta</div></>}
             <label>
                 Imię i nazwisko:
-        <input required name="name" type="text" value={formState.name} onChange={handleInputChange} />
+        <input className={styled.inputs} required name="name" type="text" value={formState.name} onChange={handleInputChange} />
             </label>
             <label>
                 Wiek:
-         <input name="age" type="number" min="0" value={formState.age} onChange={handleInputChange} />
+         <input className={styled.inputs} name="age" type="number" min="0" value={formState.age} onChange={handleInputChange} />
             </label>
             <label>
                 Diagnoza lekarska:
-        <textarea name="diagnosis" cols="5" value={formState.diagnosis} onChange={handleInputChange} />
+        <textarea name="diagnosis" cols="75" rows="4" wrap="hard" value={formState.diagnosis} onChange={handleInputChange} />
             </label>
             <label>
                 Uwagi:
-             <textarea name="comments" cols="150" value={formState.comments} onChange={handleInputChange} />
+             <textarea name="comments" cols="75" rows="3" value={formState.comments} onChange={handleInputChange} />
             </label>
             <label>
                 Zlecenia:
-             <textarea name="tasks"value={formState.tasks} onChange={handleInputChange} />
+             <textarea name="tasks" cols="75" rows="10" value={formState.tasks} onChange={handleInputChange} />
             </label>
             <input className={styled.submit} type="submit" value="ZAPISZ" />
         </form>

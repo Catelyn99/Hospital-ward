@@ -2,23 +2,23 @@ $bed-color: #a9a9f8;
 .form {
     display: flex;
     flex-flow: column wrap;
+    margin: 2% 14% 2%;
 }
 
-input,
-textarea {
-    width: 50%;
-    font-size: 12px;
-    height: 30%;
+label {
+    margin-top: 2%;
+}
+
+.inputs {
+    width: 78%;
+    height: 30px;
     float: right;
 }
 
-.submit {
-    margin-top: 10px;
-    width: 100%;
-    &:hover {
-        background-color: $bed-color;
-        cursor: grab;
-    }
+textarea {
+    width: 78%;
+    height: 72%;
+    float: right;
 }
 
 .headerBed {
@@ -27,7 +27,8 @@ textarea {
     margin-bottom: 10px;
 }
 
-.headerClean {
+.headerClean,
+.submit {
     width: 25%;
     margin: 0 auto;
     margin-bottom: 10px;
