@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/Hospital-ward/static/css/main.3a0ba97c.chunk.css",
-    "main.js": "/Hospital-ward/static/js/main.64624720.chunk.js",
-    "main.js.map": "/Hospital-ward/static/js/main.64624720.chunk.js.map",
+    "main.css": "/Hospital-ward/static/css/main.850c0b47.chunk.css",
+    "main.js": "/Hospital-ward/static/js/main.86360888.chunk.js",
+    "main.js.map": "/Hospital-ward/static/js/main.86360888.chunk.js.map",
     "runtime-main.js": "/Hospital-ward/static/js/runtime-main.55dcf129.js",
     "runtime-main.js.map": "/Hospital-ward/static/js/runtime-main.55dcf129.js.map",
-    "static/js/2.d33f8d8c.chunk.js": "/Hospital-ward/static/js/2.d33f8d8c.chunk.js",
-    "static/js/2.d33f8d8c.chunk.js.map": "/Hospital-ward/static/js/2.d33f8d8c.chunk.js.map",
+    "static/js/2.98a96027.chunk.js": "/Hospital-ward/static/js/2.98a96027.chunk.js",
+    "static/js/2.98a96027.chunk.js.map": "/Hospital-ward/static/js/2.98a96027.chunk.js.map",
     "static/js/3.5cefbc58.chunk.js": "/Hospital-ward/static/js/3.5cefbc58.chunk.js",
     "static/js/3.5cefbc58.chunk.js.map": "/Hospital-ward/static/js/3.5cefbc58.chunk.js.map",
     "index.html": "/Hospital-ward/index.html",
-    "static/css/main.3a0ba97c.chunk.css.map": "/Hospital-ward/static/css/main.3a0ba97c.chunk.css.map",
-    "static/js/2.d33f8d8c.chunk.js.LICENSE.txt": "/Hospital-ward/static/js/2.d33f8d8c.chunk.js.LICENSE.txt"
+    "static/css/main.850c0b47.chunk.css.map": "/Hospital-ward/static/css/main.850c0b47.chunk.css.map",
+    "static/js/2.98a96027.chunk.js.LICENSE.txt": "/Hospital-ward/static/js/2.98a96027.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.55dcf129.js",
-    "static/js/2.d33f8d8c.chunk.js",
-    "static/css/main.3a0ba97c.chunk.css",
-    "static/js/main.64624720.chunk.js"
+    "static/js/2.98a96027.chunk.js",
+    "static/css/main.850c0b47.chunk.css",
+    "static/js/main.86360888.chunk.js"
   ]
 }
