@@ -49,6 +49,13 @@ $intensive-color: rgb(58, 8, 8);
     font-size: 30px;
 }
 
+@media (max-width: 410px) {
+    .room,
+    .amountPatient {
+        font-size: 16px;
+    }
+}
+
 @media (max-width: 780px) {
     .room,
     .amountPatient {

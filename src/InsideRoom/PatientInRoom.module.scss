@@ -11,7 +11,7 @@
 
 .bedWords {
     text-align: center;
-    font-size: 150%;
+    font-size: 120%;
 }
 
 input {
@@ -27,5 +27,11 @@ input {
     input {
         width: 40%;
         height: 20px;
+    }
+}
+
+@media (max-width: 410px) {
+    .bedWords {
+        font-size: 100%;
     }
 }
