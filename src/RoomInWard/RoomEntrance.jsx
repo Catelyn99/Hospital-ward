@@ -16,6 +16,7 @@ const RoomEntrance = (props) => {
   const [personsState, setPersonsState] = useState({
     persons: setPersons(),
     showPersons: null,
+    activePerson: null
   });
 
   const showPatientInfo = (id) => {
@@ -24,11 +25,13 @@ const RoomEntrance = (props) => {
       setPersonsState({
         showPersons: selectedPerson,
         persons: personsState.persons,
+        activePerson: id
       });
     } else {
       setPersonsState({
         showPersons: null,
         persons: personsState.persons,
+        activePerson: null
       });
     }
   }
@@ -71,7 +74,8 @@ const cleanInfo = (info) => {
         <PatientsContext.Provider value={{
           showPatientInfo: showPatientInfo,
           saveInfo: saveInfo,
-          cleanInfo: cleanInfo
+          cleanInfo: cleanInfo,
+          active: personsState.activePerson
         }}>
             {
                 props.openedRoom === null ?

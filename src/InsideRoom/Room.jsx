@@ -9,7 +9,8 @@ const Room = (props) => {
       <PatientInRoom 
         name={person.name}
         age={person.age}
-        id={person.id} />
+        id={person.id}
+   />
 
       {
         props.showPersons !== null &&
