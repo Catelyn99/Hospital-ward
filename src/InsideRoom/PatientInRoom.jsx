@@ -5,7 +5,9 @@ import styled from './PatientInRoom.module.scss';
 const PatientInRoom = (props) => {
     const patients = useContext(PatientsContext);
     return (
-        <div className={styled.patientBed} onClick={() => patients.showPatientInfo(props.id)}>
+        <div 
+        className={`${styled.patientBed} ${patients.active === props.id ? styled.active : null}`} 
+        onClick={() => patients.showPatientInfo(props.id)}>
                 {
                     props.name !== null ? 
                 <> <p className={styled.bedWords}>Pacjent: {props.name}</p>

@@ -7,6 +7,9 @@
         cursor: grab;
         background-color: aliceblue;
     }
+    &.active {
+        background-color: rgb(16, 211, 211);
+    }
 }
 
 .bedWords {
