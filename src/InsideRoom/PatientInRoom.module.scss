@@ -1,20 +1,27 @@
 .patientBed {
-    background-color: rgb(169, 169, 248);
-    border: 2px solid black;
     padding: 20px;
+    text-align: center;
+    font-size: 120%;
     width: 20%;
-    &:hover {
-        cursor: grab;
-        background-color: aliceblue;
+    &.emptyBed {
+        background-color: rgb(116, 156, 241);
+        &:hover {
+            cursor: grab;
+            background-color: white;
+            border: 2px solid rgb(116, 156, 241);
+        }
+    }
+    &.fillBed {
+        background-color: rgb(223, 112, 233);
+        &:hover {
+            cursor: grab;
+            background-color: white;
+            border: 2px solid rgb(223, 112, 233);
+        }
     }
     &.active {
         background-color: rgb(16, 211, 211);
     }
-}
-
-.bedWords {
-    text-align: center;
-    font-size: 120%;
 }
 
 input {
