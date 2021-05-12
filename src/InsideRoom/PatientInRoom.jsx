@@ -6,13 +6,13 @@ const PatientInRoom = (props) => {
     const patients = useContext(PatientsContext);
     return (
         <div 
-        className={`${styled.patientBed} ${patients.active === props.id ? styled.active : null}`} 
+        className={`${styled.patientBed} ${props.name !== null ? styled.fillBed : styled.emptyBed} ${patients.active === props.id ? styled.active : null}`} 
         onClick={() => patients.showPatientInfo(props.id)}>
                 {
                     props.name !== null ? 
-                <> <p className={styled.bedWords}>Pacjent: {props.name}</p>
-                <p className={styled.bedWords}>Wiek: {props.age}</p> </> :
-                 <p className={styled.bedWords}>Puste łóżko</p>
+                <> <p className={styled.activeBed}>Pacjent: {props.name}</p>
+                <p className={styled.activeBed}>Wiek: {props.age}</p> </> :
+                 <p className={styled.emptyBed}>Puste łóżko</p>
                 }
         </div>
     )

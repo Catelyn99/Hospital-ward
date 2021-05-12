@@ -11,7 +11,6 @@ const Room = (props) => {
         age={person.age}
         id={person.id}
    />
-
       {
         props.showPersons !== null &&
           props.showPersons.id === person.id ?

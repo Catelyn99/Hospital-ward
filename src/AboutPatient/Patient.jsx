@@ -38,9 +38,18 @@ const Patient = (props) => {
 
     return (
         <form className={styled.form} onSubmit={saveForm}>
-            {props.patient.name === null ? <div className={styled.headerBed}>Stwórz pacjenta</div> : 
-            <><button onClick={cleanPatient} className={styled.headerClean}>Wyczyść</button>
-            <div className={styled.headerBed}>Edytuj pacjenta</div></>}
+
+            {props.patient.name === null ?
+                <>
+                    <input className={`${styled.mainHeader} ${styled.buttons} ${styled.submit}`} type="submit" value="ZAPISZ" />
+                    <div className={styled.headerBed}>Dodaj pacjenta</div>
+                </> :
+                <> <div className={styled.mainHeader}>
+                    <input className={`${styled.buttons} ${styled.submit}`} type="submit" value="ZAPISZ" />
+                    <button onClick={cleanPatient} className={`${styled.buttons} ${styled.remove}`}>USUŃ</button>
+                </div>
+                    <div className={styled.headerBed}>Edytuj</div>
+                </>}
             <label>
                 Imię i nazwisko:
         <input className={styled.inputs} required name="name" type="text" value={formState.name} onChange={handleInputChange} />
@@ -61,7 +70,7 @@ const Patient = (props) => {
                 Zlecenia:
              <textarea name="tasks" cols="75" rows="10" value={formState.tasks} onChange={handleInputChange} />
             </label>
-            <input className={styled.submit} type="submit" value="ZAPISZ" />
+
         </form>
     )
 }
