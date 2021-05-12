@@ -8,6 +8,7 @@ const PatientInRoom = (props) => {
         <div 
         className={`${styled.patientBed} ${props.name !== null ? styled.fillBed : styled.emptyBed} ${patients.active === props.id ? styled.active : null}`} 
         onClick={() => patients.showPatientInfo(props.id)}>
+            <p>ŁÓŻKO {props.id}</p>
                 {
                     props.name !== null ? 
                 <> <p className={styled.activeBed}>Pacjent: {props.name}</p>

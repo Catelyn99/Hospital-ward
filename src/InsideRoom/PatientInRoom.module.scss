@@ -1,8 +1,10 @@
 .patientBed {
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     font-size: 120%;
+    margin: 4%;
     width: 20%;
+    height: 30%;
     &.emptyBed {
         background-color: rgb(116, 156, 241);
         &:hover {
