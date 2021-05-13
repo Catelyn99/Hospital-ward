@@ -1,7 +1,7 @@
 import Room from "./Room";
-import Beds from "../InsideRoom/Beds";
 import BedsContext from "../Contexts/BedsContext"
 import { useState } from "react";
+import BedsStructure from "../InsideRoom/BedsStructure";
 
 const Rooms = (props) => {
 
@@ -104,7 +104,7 @@ const cleanInfo = (info) => {
                         checkAmountOfPatients={checkAmountOfPatients()} />
                     </div> :
                     props.openedRoom === props.room ?
-                        <Beds 
+                        <BedsStructure 
                         patients={bedsState.beds}
                         showPatient={bedsState.showPatient}
                         /> : null
