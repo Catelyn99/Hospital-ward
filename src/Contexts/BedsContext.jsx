@@ -5,7 +5,7 @@ const BedsContext = React.createContext({
     saveInfo: (info) => { },
     cleanInfo: (cleaner) => { },
     deleteBed: (id) => { },
-    addBed: () => { },
+    addBed: (id) => { },
     active: null
 });
 

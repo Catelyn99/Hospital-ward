@@ -13,7 +13,7 @@ const Beds = (props) => {
             className={`${styled.patientBed} ${props.name !== "" ? styled.fillBed : styled.emptyBed} ${bedsContext.active === props.id ? styled.active : null}`}
             onClick={() => bedsContext.showPatientInfo(props.id)}>
             <div className={`${styled.headerBed} ${props.name !== "" ? styled.active : styled.empty}`}>
-                <p>ŁÓŻKO {props.id}</p>
+                <span>ŁÓŻKO {props.id}</span>
                 <DeleteForeverIcon onClick={(e) => {
                     <Popup />
                     e.stopPropagation();
