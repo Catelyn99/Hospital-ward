@@ -1,8 +1,8 @@
 import React from 'react';
-import style from './RoomInWard.module.scss';
+import style from './Room.module.scss';
 
 
-const RoomInWard = props => {
+const Room = props => {
 
 const getStyle = () => {
     switch (props.roomType) {
@@ -27,4 +27,4 @@ const getStyle = () => {
         )}
 
 
-export default RoomInWard;
+export default Room;
