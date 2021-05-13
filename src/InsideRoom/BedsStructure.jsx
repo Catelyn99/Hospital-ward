@@ -9,24 +9,24 @@ import Beds from './Beds';
 const BedsStructure = (props) => {
 const bedsContext = useContext(BedsContext);
 
-  const patientsHTML = props.patients.map(patient =>
-    <div className={styles.containerItem} key={patient.id}>
+  const bedsHTML = props.beds.map(bed =>
+    <div className={styles.containerItem} key={bed.id}>
       <Beds 
-        name={patient.name}
-        age={patient.age}
-        id={patient.id}
+        name={bed.name}
+        age={bed.age}
+        id={bed.id}
    />
       {
         props.showPatient !== null &&
-          props.showPatient.id === patient.id ?
-          <Patient patient={patient} /> : null
+          props.showPatient.id === bed.id ?
+          <Patient patient={bed} /> : null
       }
     </div>
   )
 
   return (
     <div className={styles.container} >
-      {patientsHTML}
+      {bedsHTML}
       {
         props.showPatient === null ? 
         <div onClick={() => bedsContext.addBed()} className={`${styled.patientBed} ${styled.addBed} ${styles.containerItem}`}>

@@ -30,6 +30,10 @@ const addBed = () => {
 }
 
   const deleteBed = (id) => {
+    if (bedsState.beds.length === 1) {
+      alert('Przepraszamy, na sali musi pozostać 1 łóżko.');
+      return;
+    }
     setBedsState({
       ...bedsState,
       beds: bedsState.beds.filter(bed => bed.id !== id)
@@ -105,7 +109,7 @@ const cleanInfo = (info) => {
                     </div> :
                     props.openedRoom === props.room ?
                         <BedsStructure 
-                        patients={bedsState.beds}
+                        beds={bedsState.beds}
                         showPatient={bedsState.showPatient}
                         /> : null
             }
