@@ -8,7 +8,7 @@ const RoomEntrance = (props) => {
   const setPersons = () => {
     const patients = [];
     for (let a=1; a<=props.room.amount; a++){
-      patients.push({ name: null, age: null, diagnosis: null, comments: null, tasks: null, id: a });
+      patients.push({ name: "", age: "", diagnosis: "", comments: "", tasks: "", id: a });
     }
     return patients;
   }
@@ -18,6 +18,22 @@ const RoomEntrance = (props) => {
     showPersons: null,
     activePerson: null
   });
+
+const addBed = () => {
+  setPersonsState({
+    ...personsState,
+    persons: personsState.persons.push(
+      { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: (personsState.persons.length + 1)}
+      )
+  });
+}
+
+  const deleteBed = (id) => {
+    setPersonsState({
+      ...personsState,
+      persons: personsState.persons.filter(bed => bed.id !== id)
+    });
+  }
 
   const showPatientInfo = (id) => {
     const selectedPerson = personsState.persons.find(element => element.id === id);
@@ -54,7 +70,7 @@ const cleanInfo = (info) => {
   const persons = personsState.persons.map(person => {
     if (person.id === info.id) {
       Object.entries(info).forEach(([key, value]) => {
-        info[key] = key !== 'id' ? null : value;
+        info[key] = key !== 'id' ? "" : value;
       });
    return info;
   } 
@@ -67,7 +83,7 @@ const cleanInfo = (info) => {
 });
 }
 
-  const checkAmountOfPatients = () => personsState.persons.filter(person => person.name !== null).length;
+  const checkAmountOfPatients = () => personsState.persons.filter(person => person.name !== "").length;
 
 
     return (
@@ -75,6 +91,8 @@ const cleanInfo = (info) => {
           showPatientInfo: showPatientInfo,
           saveInfo: saveInfo,
           cleanInfo: cleanInfo,
+          deleteBed: deleteBed,
+          addBed: addBed,
           active: personsState.activePerson
         }}>
             {
