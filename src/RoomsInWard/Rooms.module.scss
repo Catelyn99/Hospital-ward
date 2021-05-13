@@ -1,0 +1,11 @@
+@media (max-width: 920px) {
+    .roomContainer {
+        flex: 0 0 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .roomContainer {
+        flex: 0 0 100%;
+    }
+}

@@ -1,120 +1,135 @@
 import Room from "./Room";
 import BedsContext from "../Contexts/BedsContext"
 import { useState } from "react";
-import BedsStructure from "../InsideRoom/BedsStructure";
+import AreasStructure from "../InsideRoom/AreasStructure";
+import styles from './Rooms.module.scss';
 
 const Rooms = (props) => {
 
-  const setBeds = () => {
-    const beds = [];
-    for (let a=1; a<=props.room.amount; a++){
-      beds.push({ name: "", age: "", diagnosis: "", comments: "", tasks: "", id: a });
+  const setAreas = () => {
+    const areas = [];
+    for (let a = 1; a <= props.room.amount; a++) {
+      areas.push({
+        id: a,
+        bed: { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: a }
+      });
     }
-    return beds;
+    return areas;
   }
 
   const [bedsState, setBedsState] = useState({
-    beds: setBeds(),
+    areas: setAreas(),
     showPatient: null,
     activeBed: null
   });
 
-const addBed = () => {
-  setBedsState({
-    ...bedsState,
-    beds: [
-      ...bedsState.beds,
-      { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: (bedsState.beds.length + 1)}
-    ]
-  });
-}
+  const addBed = (id) => {
+    setBedsState({
+      ...bedsState,
+      areas: bedsState.areas.map(area => {
+        if (area.id === id) {
+          area.bed = { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: id };
+        }
+
+        return area;
+      })
+    });
+  }
 
   const deleteBed = (id) => {
-    if (bedsState.beds.length === 1) {
+    if (bedsState.areas.map(area => area.bed).length === 1) {
       alert('Przepraszamy, na sali musi pozostać 1 łóżko.');
       return;
     }
     setBedsState({
       ...bedsState,
-      beds: bedsState.beds.filter(bed => bed.id !== id)
+      showPatient: null,
+      areas: bedsState.areas.map(area => {
+        if (area.id === id) {
+          area.bed = null;
+        }
+
+        return area;
+      })
     });
   }
 
   const showPatientInfo = (id) => {
-    const selectedPerson = bedsState.beds.find(element => element.id === id);
-    if (bedsState.showPatient !== selectedPerson) {
+    const selectedBed = bedsState.areas.find(element => element.id === id).bed;
+    if (bedsState.showPatient !== selectedBed) {
       setBedsState({
-        showPatient: selectedPerson,
-        beds: bedsState.beds,
+        showPatient: selectedBed,
+        areas: bedsState.areas,
         activeBed: id
       });
     } else {
       setBedsState({
         showPatient: null,
-        beds: bedsState.beds,
+        areas: bedsState.areas,
         activeBed: null
       });
     }
   }
 
   const saveInfo = (info) => {
-    const beds = bedsState.beds.map(bed => {
-      if (bed.id === info.id) {
-        return info;
+    const areas = bedsState.areas.map(area => {
+      if (area.id === info.id) {
+        area.bed = info;
       }
-      return bed;
+      return area;
     });
 
     setBedsState({
       ...bedsState,
-      beds: beds
+      areas: areas
     });
   }
 
-const cleanInfo = (info) => {
-  const beds = bedsState.beds.map(bed => {
-    if (bed.id === info.id) {
-      Object.entries(info).forEach(([key, value]) => {
-        info[key] = key !== 'id' ? "" : value;
-      });
-   return info;
-  } 
-  return bed;
-});
+  const cleanInfo = (info) => {
+    const areas = bedsState.areas.map(area => {
+      if (area.id === info.id) {
+        Object.entries(info).forEach(([key, value]) => {
+          info[key] = key !== 'id' ? "" : value;
+        });
+        area.bed = info;
+      }
+      return area;
+    });
 
-  setBedsState({
-    ...bedsState,
-    beds: beds
-});
-}
+    setBedsState({
+      ...bedsState,
+      areas: areas
+    });
+  }
 
-  const checkAmountOfPatients = () => bedsState.beds.filter(patient => patient.name !== "").length;
+  const checkAmountOfPatients = () =>
+    bedsState.areas.map(area => area.bed).filter(patient => patient.name !== "").length;
 
 
-    return (
-        <BedsContext.Provider value={{
-          showPatientInfo: showPatientInfo,
-          saveInfo: saveInfo,
-          cleanInfo: cleanInfo,
-          deleteBed: deleteBed,
-          addBed: addBed,
-          active: bedsState.activeBed
-        }}>
-            {
-                props.openedRoom === null ?
-                    <div onClick={props.showRoom}>
-                        <Room roomNumber={props.room.id}
-                        roomType={props.room.type}
-                        checkAmountOfPatients={checkAmountOfPatients()} />
-                    </div> :
-                    props.openedRoom === props.room ?
-                        <BedsStructure 
-                        beds={bedsState.beds}
-                        showPatient={bedsState.showPatient}
-                        /> : null
-            }
-        </BedsContext.Provider>
-    );
+  return (
+    <BedsContext.Provider value={{
+      showPatientInfo: showPatientInfo,
+      saveInfo: saveInfo,
+      cleanInfo: cleanInfo,
+      deleteBed: deleteBed,
+      addBed: addBed,
+      active: bedsState.activeBed
+    }}>
+      {
+        props.openedRoom === null ?
+          <div className={styles.roomContainer} onClick={props.showRoom}>
+            <Room roomNumber={props.room.id}
+              roomType={props.room.type}
+              checkAmountOfPatients={checkAmountOfPatients()} />
+          </div> :
+          props.openedRoom === props.room ?
+            <AreasStructure
+              areas={bedsState.areas}
+              showPatient={bedsState.showPatient}
+            /> : null
+      }
+    </BedsContext.Provider>
+  );
 }
 
 
