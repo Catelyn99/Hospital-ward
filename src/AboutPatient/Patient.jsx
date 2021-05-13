@@ -38,7 +38,7 @@ const Patient = (props) => {
 
     return (
         <form className={styled.form} onSubmit={saveForm}>
-            {props.patient.name === null ?
+            {props.patient.name === "" ?
                 <>
                     <input className={`${styled.mainHeader} ${styled.buttons} ${styled.submit}`} type="submit" value="ZAPISZ" />
                     <div className={styled.headerBed}>Dodaj pacjenta</div>

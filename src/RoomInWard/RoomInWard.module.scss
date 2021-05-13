@@ -1,6 +1,6 @@
-$primary-color: rgb(33, 33, 83);
-$isolation-color: rgb(2, 61, 10);
-$intensive-color: rgb(58, 8, 8);
+$primary-color: rgb(139, 183, 209);
+$isolation-color: rgb(9, 255, 0);
+$intensive-color: rgb(235, 35, 35);
 .room {
     height: 260px;
     margin: 10% 2% 2% 10%;
@@ -14,34 +14,26 @@ $intensive-color: rgb(58, 8, 8);
     &:hover {
         transition: all 0.3s ease;
         cursor: pointer;
+        background-color: whitesmoke;
     }
 }
 
 .roomPrimary {
     border-color: $primary-color;
-    background-color: rgb(139, 183, 209);
-    color: $primary-color;
-    &:hover {
-        background-color: aliceblue;
-    }
+    background-color: $primary-color;
+    color: rgb(25, 25, 158);
 }
 
 .roomIntensive {
     border-color: $intensive-color;
-    background-color: rgb(235, 35, 35);
-    color: $intensive-color;
-    &:hover {
-        background-color: rgb(226, 92, 92);
-    }
+    background-color: $intensive-color;
+    color: rgb(88, 21, 21);
 }
 
 .roomIsolation {
-    background-color: rgb(9, 255, 0);
+    background-color: $isolation-color;
     border-color: $isolation-color;
-    color: $isolation-color;
-    &:hover {
-        background-color: rgb(158, 247, 118);
-    }
+    color: rgb(5, 66, 5);
 }
 
 .amountPatient {

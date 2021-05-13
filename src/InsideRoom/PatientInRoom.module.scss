@@ -1,28 +1,54 @@
+$active-bed: rgb(116, 156, 241);
+$empty-bed: rgb(223, 112, 233);
+$activebed-letters: rgb(138, 5, 138);
+$emptybed-letters: rgb(61, 61, 231);
 .patientBed {
     padding: 10px;
     text-align: center;
-    font-size: 120%;
-    margin: 4%;
-    width: 20%;
-    height: 30%;
+    height: 162px;
     &.emptyBed {
-        background-color: rgb(116, 156, 241);
+        background-color: $empty-bed;
+        color: $emptybed-letters;
         &:hover {
             cursor: grab;
             background-color: white;
-            border: 2px solid rgb(116, 156, 241);
+            border: 2px solid $active-bed;
         }
     }
     &.fillBed {
-        background-color: rgb(223, 112, 233);
+        background-color: $active-bed;
+        color: $activebed-letters;
         &:hover {
             cursor: grab;
             background-color: white;
-            border: 2px solid rgb(223, 112, 233);
+            border: 2px solid $empty-bed;
         }
     }
     &.active {
         background-color: rgb(16, 211, 211);
+    }
+    &.addBed {
+        margin-top: 2%;
+        color: $empty-bed;
+        border: 2px solid $empty-bed;
+        &:hover {
+            cursor: grab;
+            border: 2px solid $active-bed;
+            color: $active-bed;
+        }
+    }
+}
+
+.headerBed {
+    font-weight: 700;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    &.empty {
+        color: $emptybed-letters;
+    }
+    &.active {
+        color: $activebed-letters;
     }
 }
 
@@ -43,7 +69,7 @@ input {
 }
 
 @media (max-width: 410px) {
-    .bedWords {
-        font-size: 100%;
+    .patientBed {
+        width: 130px;
     }
 }
