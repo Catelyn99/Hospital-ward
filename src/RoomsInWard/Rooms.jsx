@@ -1,7 +1,7 @@
 import Room from "./Room";
-import Beds from "../InsideRoom/Beds";
 import BedsContext from "../Contexts/BedsContext"
 import { useState } from "react";
+import BedsStructure from "../InsideRoom/BedsStructure";
 
 const Rooms = (props) => {
 
@@ -30,6 +30,10 @@ const addBed = () => {
 }
 
   const deleteBed = (id) => {
+    if (bedsState.beds.length === 1) {
+      alert('Przepraszamy, na sali musi pozostać 1 łóżko.');
+      return;
+    }
     setBedsState({
       ...bedsState,
       beds: bedsState.beds.filter(bed => bed.id !== id)
@@ -104,8 +108,8 @@ const cleanInfo = (info) => {
                         checkAmountOfPatients={checkAmountOfPatients()} />
                     </div> :
                     props.openedRoom === props.room ?
-                        <Beds 
-                        patients={bedsState.beds}
+                        <BedsStructure 
+                        beds={bedsState.beds}
                         showPatient={bedsState.showPatient}
                         /> : null
             }

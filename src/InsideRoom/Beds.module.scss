@@ -1,9 +1,80 @@
-.container {
+$active-bed: rgb(116, 156, 241);
+$empty-bed: rgb(223, 112, 233);
+$activebed-letters: rgb(138, 5, 138);
+$emptybed-letters: rgb(61, 61, 231);
+.patientBed {
+    padding: 10px;
+    text-align: center;
+    height: 162px;
+    margin-bottom: 4%;
+    font-weight: 700;
+    &.emptyBed {
+        background-color: $empty-bed;
+        color: $emptybed-letters;
+        &:hover {
+            cursor: grab;
+            background-color: white;
+            border: 2px solid $active-bed;
+        }
+    }
+    &.fillBed {
+        background-color: $active-bed;
+        color: $activebed-letters;
+        &:hover {
+            cursor: grab;
+            background-color: white;
+            border: 2px solid $empty-bed;
+        }
+    }
+    &.active {
+        background-color: rgb(16, 211, 211);
+    }
+    &.addBed {
+        color: $empty-bed;
+        border: 2px solid $empty-bed;
+        &:hover {
+            cursor: grab;
+            border: 2px solid $active-bed;
+            color: $active-bed;
+        }
+    }
+}
+
+.headerBed {
+    font-weight: 700;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    width: 100%;
-    .containerItem {
-        flex: 0 0 30%;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    &.empty {
+        color: $emptybed-letters;
+    }
+    &.active {
+        color: $activebed-letters;
+    }
+}
+
+.createPatientIcon {
+    font-size: 80px;
+}
+
+input {
+    width: 45%;
+    height: 25px;
+}
+
+.inputAge {
+    float: right;
+}
+
+@media (max-width: 768px) {
+    input {
+        width: 40%;
+        height: 20px;
+    }
+}
+
+@media (max-width: 410px) {
+    .patientBed {
+        width: 130px;
     }
 }
