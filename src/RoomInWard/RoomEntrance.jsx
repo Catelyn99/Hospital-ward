@@ -22,9 +22,10 @@ const RoomEntrance = (props) => {
 const addBed = () => {
   setPersonsState({
     ...personsState,
-    persons: personsState.persons.push(
+    persons: [
+      ...personsState.persons,
       { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: (personsState.persons.length + 1)}
-      )
+    ]
   });
 }
 

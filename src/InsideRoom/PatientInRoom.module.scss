@@ -6,6 +6,7 @@ $emptybed-letters: rgb(61, 61, 231);
     padding: 10px;
     text-align: center;
     height: 162px;
+    margin-bottom: 4%;
     &.emptyBed {
         background-color: $empty-bed;
         color: $emptybed-letters;
@@ -28,7 +29,6 @@ $emptybed-letters: rgb(61, 61, 231);
         background-color: rgb(16, 211, 211);
     }
     &.addBed {
-        margin-top: 2%;
         color: $empty-bed;
         border: 2px solid $empty-bed;
         &:hover {
@@ -50,6 +50,10 @@ $emptybed-letters: rgb(61, 61, 231);
     &.active {
         color: $activebed-letters;
     }
+}
+
+.createPatientIcon {
+    font-size: 80px;
 }
 
 input {

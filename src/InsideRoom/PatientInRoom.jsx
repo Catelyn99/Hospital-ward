@@ -24,7 +24,7 @@ const PatientInRoom = (props) => {
                 props.name !== "" ?
                     <> <p className={styled.fillBed}>Pacjent: {props.name}</p>
                         <p className={styled.fillBed}>Wiek: {props.age}</p> </> :
-                    <PersonAddIcon />
+                    <div className={styled.createPatientIcon}><PersonAddIcon fontSize="inherit"/></div>
             }
         </div>
     )

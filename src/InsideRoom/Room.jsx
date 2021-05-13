@@ -28,10 +28,11 @@ const bed = useContext(PatientsContext);
     <div className={styles.container} >
       {personsHTML}
       {
-        props.showPersons === null ? <>
-        <div onClick={bed.addBed()} className={`${styles.containerItem} ${styled.patientBed} ${styled.addBed}`}>DODAJ ŁÓŻKO</div>
-        <LocalHospitalIcon />
-        </> : null
+        props.showPersons === null ? 
+        <div onClick={() => bed.addBed()} className={`${styled.patientBed} ${styled.addBed} ${styles.containerItem}`}>
+        <span>DODAJ ŁÓŻKO</span>
+        <LocalHospitalIcon size="medium"/>
+        </div> : null
       }
     </div>
   );
