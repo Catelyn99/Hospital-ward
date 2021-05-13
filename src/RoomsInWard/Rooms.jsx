@@ -2,6 +2,7 @@ import Room from "./Room";
 import BedsContext from "../Contexts/BedsContext"
 import { useState } from "react";
 import AreasStructure from "../InsideRoom/AreasStructure";
+import styles from './Rooms.module.scss';
 
 const Rooms = (props) => {
 
@@ -116,7 +117,7 @@ const Rooms = (props) => {
     }}>
       {
         props.openedRoom === null ?
-          <div onClick={props.showRoom}>
+          <div className={styles.roomContainer} onClick={props.showRoom}>
             <Room roomNumber={props.room.id}
               roomType={props.room.type}
               checkAmountOfPatients={checkAmountOfPatients()} />

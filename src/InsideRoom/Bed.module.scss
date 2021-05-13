@@ -1,0 +1,36 @@
+$active-bed: rgb(116, 156, 241);
+$empty-bed: rgb(223, 112, 233);
+$activebed-letters: rgb(138, 5, 138);
+$emptybed-letters: rgb(61, 61, 231);
+.headerBed {
+    font-weight: 700;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    &.empty {
+        color: $emptybed-letters;
+    }
+    &.active {
+        color: $activebed-letters;
+    }
+}
+
+.createPatientIcon {
+    font-size: 80px;
+}
+
+input {
+    width: 45%;
+    height: 25px;
+}
+
+.inputAge {
+    float: right;
+}
+
+@media (max-width: 768px) {
+    input {
+        width: 40%;
+        height: 20px;
+    }
+}

@@ -30,6 +30,7 @@ $emptybed-letters: rgb(61, 61, 231);
         background-color: rgb(16, 211, 211);
     }
     &.addBed {
+        padding-top: 35px;
         color: $empty-bed;
         border: 2px solid $empty-bed;
         &:hover {
@@ -37,44 +38,35 @@ $emptybed-letters: rgb(61, 61, 231);
             border: 2px solid $active-bed;
             color: $active-bed;
         }
+        .addBedIcon {
+            font-size: 80px;
+        }
     }
 }
 
-.headerBed {
-    font-weight: 700;
+.container {
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    &.empty {
-        color: $emptybed-letters;
-    }
-    &.active {
-        color: $activebed-letters;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    width: 100%;
+    .containerItem {
+        flex: 0 0 30%;
     }
 }
 
-.createPatientIcon {
-    font-size: 80px;
-}
-
-input {
-    width: 45%;
-    height: 25px;
-}
-
-.inputAge {
-    float: right;
-}
-
-@media (max-width: 768px) {
-    input {
-        width: 40%;
-        height: 20px;
+@media (max-width: 920px) {
+    .container {
+        .containerItem {
+            margin: 0 5px;
+            flex: 0 0 45%;
+        }
     }
 }
 
 @media (max-width: 410px) {
-    .patientBed {
-        width: 130px;
+    .container {
+        .containerItem {
+            flex: 0 0 100%;
+        }
     }
 }
