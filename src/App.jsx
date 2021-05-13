@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from './App.module.scss';
-import RoomEntrance from './RoomInWard/RoomEntrance';
+import Rooms from './RoomsInWard/Rooms';
 import Title from './Header/Title';
 
 const App = () => {
@@ -59,7 +59,7 @@ const App = () => {
         <Title />
       <div className={styled.container}>
         {roomsState.rooms.map(element => {
-         return <RoomEntrance key={element.id} showRoom={() => showRoom(element.id)}
+         return <Rooms key={element.id} showRoom={() => showRoom(element.id)}
          openedRoom={roomsState.openedRoom}
          room={element} />
         })}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PatientsContext = React.createContext({
+const BedsContext = React.createContext({
     showPatientInfo: (id) => { },
     saveInfo: (info) => { },
     cleanInfo: (cleaner) => { },
@@ -9,4 +9,4 @@ const PatientsContext = React.createContext({
     active: null
 });
 
-export default PatientsContext;
+export default BedsContext;

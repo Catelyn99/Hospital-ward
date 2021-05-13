@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-import PatientsContext from '../Contexts/PatientsContext';
+import BedsContext from '../Contexts/BedsContext';
 import styled from './Patient.module.scss';
 
 const Patient = (props) => {
-    const patients = useContext(PatientsContext);
+    const bedsContext = useContext(BedsContext);
 
     const [formState, setFormState] = useState({
         ...props.patient
@@ -21,11 +21,11 @@ const Patient = (props) => {
 
     const saveForm = (event) => {
         event.preventDefault();
-        patients.saveInfo(formState);
+        bedsContext.saveInfo(formState);
     }
 
     const cleanPatient = () => {
-        patients.cleanInfo(formState);
+        bedsContext.cleanInfo(formState);
         setFormState({
             ...formState,
             name: '',

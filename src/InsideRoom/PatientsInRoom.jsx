@@ -1,23 +1,23 @@
 import { useContext } from 'react';
-import PatientsContext from '../Contexts/PatientsContext';
+import BedsContext from '../Contexts/BedsContext';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import styled from './PatientInRoom.module.scss';
+import styled from './PatientsInRoom.module.scss';
 import Popup from '../Popup/Popup';
 
-const PatientInRoom = (props) => {
-    const beds = useContext(PatientsContext);
+const PatientsInRoom = (props) => {
+    const bedsContext = useContext(BedsContext);
 
     return (
         <div
-            className={`${styled.patientBed} ${props.name !== "" ? styled.fillBed : styled.emptyBed} ${beds.active === props.id ? styled.active : null}`}
-            onClick={() => beds.showPatientInfo(props.id)}>
+            className={`${styled.patientBed} ${props.name !== "" ? styled.fillBed : styled.emptyBed} ${bedsContext.active === props.id ? styled.active : null}`}
+            onClick={() => bedsContext.showPatientInfo(props.id)}>
             <div className={`${styled.headerBed} ${props.name !== "" ? styled.active : styled.empty}`}>
                 <p>ŁÓŻKO {props.id}</p>
                 <DeleteForeverIcon onClick={(e) => {
                     <Popup />
                     e.stopPropagation();
-                    beds.deleteBed(props.id);
+                    bedsContext.deleteBed(props.id);
                 }} />
             </div>
             {
@@ -29,4 +29,4 @@ const PatientInRoom = (props) => {
         </div>
     )
 }
-export default PatientInRoom;
+export default PatientsInRoom;
