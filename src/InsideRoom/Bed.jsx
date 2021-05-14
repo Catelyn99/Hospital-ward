@@ -25,7 +25,8 @@ const Bed = (props) => {
                 props.name !== "" ?
                     <> <p className={commonstyles.fillBed}>Pacjent: {props.name}</p>
                         <p className={commonstyles.fillBed}>Wiek: {props.age}</p> </> :
-                    <div className={styled.createPatientIcon}><PersonAddIcon fontSize="inherit"/></div>
+                    <><div className={styled.createPatientIcon}><PersonAddIcon fontSize="inherit"/></div>
+                    <span>DODAJ PACJENTA</span></>
             }
         </div>
     )

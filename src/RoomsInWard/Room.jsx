@@ -19,9 +19,8 @@ const getStyle = () => {
         <div className={[style.room, getStyle()].join(' ')}>
             {
                 props.roomType === 'normal' ? 
-                <p>SALA </p>: null
+                <p>SALA {props.roomNumber}</p>: null
             }
-            <p>{props.roomNumber}</p>
             <p className={style.amountPatient}>Stan pacjentów: {props.checkAmountOfPatients}</p>
             </div>
         )}
