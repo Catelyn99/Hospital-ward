@@ -27,11 +27,6 @@ textarea {
     margin-bottom: 10px;
 }
 
-.mainHeader {
-    display: flex;
-    justify-content: space-around;
-}
-
 .buttons {
     width: 25%;
     margin: 0 auto;
@@ -51,6 +46,7 @@ textarea {
 }
 
 .submit {
+    margin-top: 10px;
     background-color: yellowgreen;
     border: 2px solid yellowgreen;
     &:hover {

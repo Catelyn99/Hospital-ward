@@ -9,21 +9,20 @@ $emptybed-letters: rgb(61, 61, 231);
     margin-bottom: 5%;
     font-weight: 700;
     &.emptyBed {
-        background-color: $empty-bed;
         color: $emptybed-letters;
+        border: 4px solid $emptybed-letters;
         &:hover {
             cursor: grab;
-            background-color: white;
-            border: 4px solid $active-bed;
+            background-color: $empty-bed;
+            border: 4px solid $empty-bed;
         }
     }
     &.fillBed {
         background-color: $active-bed;
-        color: $activebed-letters;
+        color: white;
         &:hover {
             cursor: grab;
-            background-color: white;
-            border: 4px solid $empty-bed;
+            background-color: $empty-bed;
         }
     }
     &.active {
