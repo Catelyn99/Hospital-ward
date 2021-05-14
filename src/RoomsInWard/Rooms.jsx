@@ -24,16 +24,29 @@ const Rooms = (props) => {
   });
 
   const addBed = (id) => {
-    setBedsState({
-      ...bedsState,
-      areas: bedsState.areas.map(area => {
-        if (area.id === id) {
-          area.bed = { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: id };
-        }
-
-        return area;
-      })
-    });
+    const bed = { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: id };
+    if (bedsState.areas.find(area => area.id === id)) {
+      setBedsState({
+        ...bedsState,
+        areas: bedsState.areas.map(area => {
+          if (area.id === id) {
+            area.bed = bed;
+          }
+          return area;
+        })
+      });
+    } else {
+      setBedsState({
+        ...bedsState,
+        areas: [
+          ...bedsState.areas,
+          {
+            id: id,
+            bed: bed
+          }
+        ]
+      });
+    }
   }
 
   const deleteBed = (id) => {

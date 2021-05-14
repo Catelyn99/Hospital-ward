@@ -4,6 +4,7 @@ import Bed from './Bed';
 import Patient from '../AboutPatient/Patient';
 import commonStyles from './Common.module.scss';
 import BedsContext from '../Contexts/BedsContext';
+import AddBed from './AddBed';
 
 const Area = (props) => {
     const bedsContext = useContext(BedsContext);
@@ -23,10 +24,8 @@ const Area = (props) => {
                     }
                 </>
                 : props.showPatient === null ?
-                    <div onClick={() => bedsContext.addBed(props.area.id)} className={`${commonStyles.patientBed} ${commonStyles.addBed} ${commonStyles.containerItem}`}>
-                        <span>DODAJ ŁÓŻKO {props.area.id}</span>
-                        <LocalHospitalIcon size="medium" />
-                    </div> : null}
+                    <AddBed onClick={() => bedsContext.addBed(props.area.id)}/>
+                     : null}
         </>
     )
 }

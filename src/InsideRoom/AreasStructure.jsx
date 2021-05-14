@@ -1,8 +1,8 @@
-import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import React, { useContext } from 'react';
 import BedsContext from '../Contexts/BedsContext';
 import commonStyles from './Common.module.scss';
 import Area from './Area';
+import AddBed from './AddBed';
 
 const AreasStructure = (props) => {
   const bedsContext = useContext(BedsContext);
@@ -18,10 +18,8 @@ const AreasStructure = (props) => {
       {areasHTML}
       {
         props.showPatient === null ?
-          <div onClick={() => bedsContext.addBed()} className={`${commonStyles.patientBed} ${commonStyles.addBed} ${commonStyles.containerItem}`}>
-            <span>DODAJ ŁÓŻKO {props.areas.length + 1}</span>
-           <div className={commonStyles.addBedIcon}><LocalHospitalIcon fontSize="inherit" /></div>
-          </div> : null
+        <AddBed onClick={() => bedsContext.addBed(props.areas.length + 1)} />
+        : null
       }
     </div>
   );
