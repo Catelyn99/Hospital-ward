@@ -3,7 +3,7 @@ import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import React from 'react';
 
 
-const AddRoom = (props) => {
+const AddBed = (props) => {
 
     return (
         <div className={`${commonStyles.patientBed} ${commonStyles.addBed} ${commonStyles.containerItem}`}>
@@ -13,4 +13,4 @@ const AddRoom = (props) => {
     )
 }
 
-export default AddRoom;
+export default AddBed;
