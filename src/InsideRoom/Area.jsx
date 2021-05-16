@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
-import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import Bed from './Bed';
 import Patient from '../AboutPatient/Patient';
-import commonStyles from './Common.module.scss';
 import BedsContext from '../Contexts/BedsContext';
 import AddBed from './AddBed';
 
