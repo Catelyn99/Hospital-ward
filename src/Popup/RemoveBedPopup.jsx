@@ -2,6 +2,7 @@ import ReactDOM from "react-dom";
 import styles from './RemoveBedPopup.module.scss';
 const RemoveBedPopup = ({isOpen, onReject, onAccept}) => {
     if (!isOpen) return null;
+    
     return ReactDOM.createPortal(
         <div className={styles.main}>
             <h1>Czy chcesz usunąć łóżko?</h1>

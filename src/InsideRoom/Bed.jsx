@@ -13,21 +13,33 @@ const Bed = (props) => {
         isOpenRemovePopup: false
     });
 
+    const isPatient = () => props.name !== "";
+
     const onIconClick = (e) => {
         e.stopPropagation();
-        if (props.name !== "") {
-            setBedState({
-                isOpenRemovePopup: true
-            });
-        } else {
-            bedsContext.deleteBed(props.id);
-        }
+        isPatient() ? showPopup() : bedsContext.deleteBed(props.id);
     }
 
-    const closePopup = () =>
+    const showPopup = () => {
+        setBedState({
+            isOpenRemovePopup: true
+        });
+        document.body.style.overflow = "hidden";
+        const rootStyle = document.querySelector('#root').style;
+        rootStyle.filter = "blur(5px)";
+        rootStyle.pointerEvents = "none";
+    }
+
+    const closePopup = () => {
         setBedState({
             isOpenRemovePopup: false
         });
+
+        document.body.style.overflow = "initial";
+        const rootStyle = document.querySelector('#root').style;
+        rootStyle.filter = "initial";
+        rootStyle.pointerEvents = "initial";
+    }
 
     const rejectPopup = (e) => {
         e.stopPropagation();
@@ -41,9 +53,9 @@ const Bed = (props) => {
     }
     return (
         <div
-            className={`${commonstyles.patientBed} ${props.name !== "" ? commonstyles.fillBed : commonstyles.emptyBed} ${bedsContext.active === props.id ? commonstyles.active : null}`}
+            className={`${commonstyles.patientBed} ${isPatient ? commonstyles.fillBed : commonstyles.emptyBed} ${bedsContext.active === props.id ? commonstyles.active : null}`}
             onClick={() => bedsContext.showPatientInfo(props.id)}>
-            <div className={`${styled.headerBed} ${props.name !== "" ? styled.active : styled.empty}`}>
+            <div className={`${styled.headerBed} ${isPatient ? styled.active : styled.empty}`}>
                 <span>ŁÓŻKO {props.id}</span>
                 <RemoveBedPopup isOpen={bedState.isOpenRemovePopup}
                     onAccept={acceptPopup}
