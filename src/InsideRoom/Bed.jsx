@@ -53,9 +53,9 @@ const Bed = (props) => {
     }
     return (
         <div
-            className={`${commonstyles.patientBed} ${isPatient ? commonstyles.fillBed : commonstyles.emptyBed} ${bedsContext.active === props.id ? commonstyles.active : null}`}
+            className={`${commonstyles.patientBed} ${isPatient() ? commonstyles.fillBed : commonstyles.emptyBed} ${bedsContext.active === props.id ? commonstyles.active : null}`}
             onClick={() => bedsContext.showPatientInfo(props.id)}>
-            <div className={`${styled.headerBed} ${isPatient ? styled.active : styled.empty}`}>
+            <div className={`${styled.headerBed} ${isPatient() ? styled.active : styled.empty}`}>
                 <span>ŁÓŻKO {props.id}</span>
                 <RemoveBedPopup isOpen={bedState.isOpenRemovePopup}
                     onAccept={acceptPopup}
