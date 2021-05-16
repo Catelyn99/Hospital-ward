@@ -8,7 +8,7 @@ const Title = () => {
     }
 
     return (
-        <h1 onClick={refresh} className={styled.h1}>CHIRURGIA OGÓLNA</h1>
+        <h1 onClick={refresh} className={styled.title}>CHIRURGIA OGÓLNA</h1>
     )
 }
 
