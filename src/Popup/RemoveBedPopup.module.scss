@@ -1,5 +1,4 @@
 .main {
-    filter: blur(0px);
     position: absolute;
     top: 25%;
     padding-top: 30px;
@@ -30,5 +29,12 @@
         .reject {
             background-color: rgb(102, 94, 94);
         }
+    }
+}
+
+@media (max-width: 768px) {
+    .main .buttons .accept,
+    .main .buttons .reject {
+        width: 40%;
     }
 }
