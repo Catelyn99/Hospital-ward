@@ -13,11 +13,32 @@ const Bed = (props) => {
         isOpenRemovePopup: false
     });
 
-    const closePopup = () => 
-    setBedState({
-        isOpenRemovePopup: false
-    });
+    const onIconClick = (e) => {
+        e.stopPropagation();
+        if (props.name !== "") {
+            setBedState({
+                isOpenRemovePopup: true
+            });
+        } else {
+            bedsContext.deleteBed(props.id);
+        }
+    }
 
+    const closePopup = () =>
+        setBedState({
+            isOpenRemovePopup: false
+        });
+
+    const rejectPopup = (e) => {
+        e.stopPropagation();
+        closePopup();
+    }
+
+    const acceptPopup = (e) => {
+        e.stopPropagation();
+        bedsContext.deleteBed(props.id);
+        closePopup();
+    }
     return (
         <div
             className={`${commonstyles.patientBed} ${props.name !== "" ? commonstyles.fillBed : commonstyles.emptyBed} ${bedsContext.active === props.id ? commonstyles.active : null}`}
@@ -25,23 +46,10 @@ const Bed = (props) => {
             <div className={`${styled.headerBed} ${props.name !== "" ? styled.active : styled.empty}`}>
                 <span>ŁÓŻKO {props.id}</span>
                 <RemoveBedPopup isOpen={bedState.isOpenRemovePopup}
-                    onAccept={(e) => {
-                    e.stopPropagation();
-                        bedsContext.deleteBed(props.id);
-                        closePopup();
-                    }}
-                    onReject={(e) => {
-                        e.stopPropagation();
-                        closePopup()
-                    }}
+                    onAccept={acceptPopup}
+                    onReject={rejectPopup}
                 />
-                <DeleteForeverIcon onClick={(e) => {
-                    setBedState({
-                        isOpenRemovePopup: true
-                    });
-                    e.stopPropagation();
-                    
-                }} />
+                <DeleteForeverIcon onClick={onIconClick} />
             </div>
             {
                 props.name !== "" ?
