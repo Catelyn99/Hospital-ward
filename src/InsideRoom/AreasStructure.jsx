@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
-import BedsContext from '../Contexts/BedsContext';
+import React from 'react';
 import commonStyles from './Common.module.scss';
 import Area from './Area';
 import AddBed from './AddBed';
 
 const AreasStructure = (props) => {
-  const bedsContext = useContext(BedsContext);
 
   const areasHTML = props.areas.map(area =>
     <div className={commonStyles.containerItem} key={area.id}>
@@ -18,7 +16,8 @@ const AreasStructure = (props) => {
       {areasHTML}
       {
         props.showPatient === null ?
-        <AddBed onClick={() => bedsContext.addBed(props.areas.length + 1)} />
+        <AddBed  id={props.areas.length + 1}
+        />
         : null
       }
     </div>

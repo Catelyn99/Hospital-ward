@@ -50,7 +50,9 @@ const Rooms = (props) => {
   }
 
   const deleteBed = (id) => {
-    if (bedsState.areas.map(area => area.bed).length === 1) {
+    //debugger;
+    console.log(bedsState.areas.map(area => area.bed).length);
+    if (bedsState.areas.filter(area => area.bed !== null).map(area => area.bed).length === 1) {
       alert('Przepraszamy, na sali musi pozostać 1 łóżko.');
       return;
     }
