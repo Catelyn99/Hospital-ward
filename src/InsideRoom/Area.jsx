@@ -1,13 +1,9 @@
-import React, { useContext } from 'react';
-import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
+import React from 'react';
 import Bed from './Bed';
 import Patient from '../AboutPatient/Patient';
-import commonStyles from './Common.module.scss';
-import BedsContext from '../Contexts/BedsContext';
 import AddBed from './AddBed';
 
 const Area = (props) => {
-    const bedsContext = useContext(BedsContext);
     return (
         <>
             { props.area.bed !== null ?
@@ -24,7 +20,7 @@ const Area = (props) => {
                     }
                 </>
                 : props.showPatient === null ?
-                    <AddBed onClick={() => bedsContext.addBed(props.area.id)}/>
+                    <AddBed id={props.area.id}/>
                      : null}
         </>
     )
