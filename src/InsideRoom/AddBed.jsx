@@ -10,7 +10,7 @@ const AddBed = (props) => {
     return (
         <div onClick={() => bedsContext.addBed(props.id)}
         className={`${commonStyles.patientBed} ${commonStyles.addBed} ${commonStyles.containerItem}`}>
-            <span>DODAJ ŁÓŻKO </span>
+            <span>DODAJ ŁÓŻKO {props.id}</span>
            <div className={commonStyles.addBedIcon}><LocalHospitalIcon fontSize="inherit" /></div>
           </div>
     )

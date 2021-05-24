@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import ReactDOM from "react-dom";
 import BedsContext from '../Contexts/BedsContext';
 import styled from './Patient.module.scss';
 
@@ -36,7 +37,7 @@ const Patient = (props) => {
         });
     }
 
-    return (
+    return ReactDOM.createPortal(
         <form className={styled.form} onSubmit={saveForm}>
             {props.patient.name === "" ?
                     <div className={styled.headerBed}>Dodaj pacjenta</div> :
@@ -65,7 +66,7 @@ const Patient = (props) => {
              <textarea name="tasks" cols="75" rows="10" value={formState.tasks} onChange={handleInputChange} />
             </label>
             <input className={`${styled.buttons} ${styled.submit}`} type="submit" value="ZAPISZ" />
-        </form>
+        </form>, document.body
     )
 }
 

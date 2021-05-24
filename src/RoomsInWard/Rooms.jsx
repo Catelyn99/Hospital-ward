@@ -1,8 +1,10 @@
 import Room from "./Room";
+import {Link} from 'react-router-dom';
 import BedsContext from "../Contexts/BedsContext"
 import { useState } from "react";
 import AreasStructure from "../InsideRoom/AreasStructure";
 import styles from './Rooms.module.scss';
+
 
 const Rooms = (props) => {
 
@@ -30,7 +32,7 @@ const Rooms = (props) => {
         ...bedsState,
         areas: bedsState.areas.map(area => {
           if (area.id === id) {
-            area.bed = bed;
+            return { ...area, bed };
           }
           return area;
         })
@@ -50,7 +52,6 @@ const Rooms = (props) => {
   }
 
   const deleteBed = (id) => {
-    //debugger;
     console.log(bedsState.areas.map(area => area.bed).length);
     if (bedsState.areas.filter(area => area.bed !== null).map(area => area.bed).length === 1) {
       alert('Przepraszamy, na sali musi pozostać 1 łóżko.');
@@ -106,7 +107,7 @@ const Rooms = (props) => {
         Object.entries(info).forEach(([key, value]) => {
           info[key] = key !== 'id' ? "" : value;
         });
-        area.bed = info;
+        return {...area, bed: info};
       }
       return area;
     });
@@ -133,9 +134,15 @@ const Rooms = (props) => {
       {
         props.openedRoom === null ?
           <div className={styles.roomContainer} onClick={props.showRoom}>
+            <Link to={{
+    pathname: "/room/",
+    search: `id=${props.room.id}`,
+  }}>
             <Room roomNumber={props.room.id}
               roomType={props.room.type}
-              checkAmountOfPatients={checkAmountOfPatients()} />
+              checkAmountOfPatients={checkAmountOfPatients()}
+               />
+               </Link>
           </div> :
           props.openedRoom === props.room ?
             <AreasStructure
