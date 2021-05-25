@@ -4,19 +4,23 @@ import Patient from '../AboutPatient/Patient';
 import AddBed from './AddBed';
 
 const Area = (props) => {
+    const bed =  props.area.bed;
+    
     return (
         <>
-            { props.area.bed !== null ?
+            { bed !== null ?
                 <>
                     <Bed
-                        name={props.area.bed.name}
-                        age={props.area.bed.age}
-                        id={props.area.bed.id}
+                        name={bed.name}
+                        age={bed.age}
+                        id={bed.id}
+                        roomId={props.roomId}
                     />
                     {
                         props.showPatient !== null &&
-                            props.showPatient.id === props.area.bed.id ?
-                            <Patient patient={props.area.bed} /> : null
+                            props.showPatient.id === bed.id ?
+                            <Patient patient={bed}
+                            roomId={props.roomId} /> : null
                     }
                 </>
                 : props.showPatient === null ?

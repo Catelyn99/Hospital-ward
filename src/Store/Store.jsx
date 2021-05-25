@@ -4,10 +4,10 @@ import WardReducer from "./WardReducer";
 
 const setAreas = (amount) => {
     const areas = [];
-    for (let a = 1; a <= amount; a++) {
+    for (let id = 1; id <= amount; id++) {
       areas.push({
-        id: a,
-        bed: { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: a }
+        id: id,
+        bed: { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: id }
       });
     }
     return areas;
@@ -19,47 +19,47 @@ const initialState = {
             id: 1,
             type: 'normal',
             amount: 3,
-            areas: setAreas(this.amount)
+            areas: setAreas(3)
           }, {
             id: 2,
             type: 'normal',
             amount: 3,
-            areas: setAreas(this.amount)
+            areas: setAreas(3)
           }, {
             id: 3,
             type: 'normal',
             amount: 3,
-            areas: setAreas(this.amount)
+            areas: setAreas(3)
           }, {
             id: 4,
             type: 'normal',
             amount: 3,
-            areas: setAreas(this.amount)
+            areas: setAreas(3)
           }, {
             id: 5,
             type: 'normal',
             amount: 3,
-            areas: setAreas(this.amount)
+            areas: setAreas(3)
           }, {
             id: 6,
             type: 'normal',
             amount: 3,
-            areas: setAreas(this.amount)
+            areas: setAreas(3)
           }, {
             id: 7,
             type: 'normal',
             amount: 3,
-            areas: setAreas(this.amount)
+            areas: setAreas(3)
           }, {
             id: 'IZOLATKA',
             type: 'isolation',
             amount: 1,
-            areas: setAreas(this.amount)
+            areas: setAreas(1)
           }, {
             id: 'SIOM',
             type: 'intensive',
             amount: 2,
-            areas: setAreas(this.amount)
+            areas: setAreas(2)
           }],
 };
 

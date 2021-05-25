@@ -1,14 +1,23 @@
 import React, { useState, useContext } from 'react';
 import ReactDOM from "react-dom";
-import BedsContext from '../Contexts/BedsContext';
+import { Context } from '../Store/Store';
 import styled from './Patient.module.scss';
 
 const Patient = (props) => {
-    const bedsContext = useContext(BedsContext);
+  const [state, dispatch] = useContext(Context);
 
     const [formState, setFormState] = useState({
         ...props.patient
     });
+
+    const saveInfo = (info) => {
+        dispatch({ type: 'SAVE_INFO', payload: { roomId:  props.roomId, info: info } });
+      }    
+
+      const cleanInfo = (info) => {
+        dispatch({ type: 'CLEAN_INFO', payload: { roomId:  props.roomId, info: info } });
+      }
+    
 
     const handleInputChange = (event) => {
         const name = event.target.name;
@@ -22,11 +31,11 @@ const Patient = (props) => {
 
     const saveForm = (event) => {
         event.preventDefault();
-        bedsContext.saveInfo(formState);
+        saveInfo(formState);
     }
 
     const cleanPatient = () => {
-        bedsContext.cleanInfo(formState);
+        cleanInfo(formState);
         setFormState({
             ...formState,
             name: '',

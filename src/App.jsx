@@ -4,24 +4,21 @@ import {
   Switch
 } from 'react-router-dom';
 import Title from './Header/Title';
-import Home from './Home';
 import AreasStructure from './InsideRoom/AreasStructure';
+import Rooms from './RoomsInWard/Rooms';
 import Store from './Store/Store';
 
 const App = () => {
-
-  
-
   return (
     <Store>
-    <Router>
-      <Title />
+      <Router>
+        <Title />
         <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/room/:id" component={AreasStructure} />
+          <Route exact path="/" component={Rooms} />
+          <Route path="/room/:id" component={AreasStructure} />
         </Switch>
       </Router>
-      </Store>
+    </Store>
   );
 }
 
