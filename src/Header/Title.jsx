@@ -5,7 +5,7 @@ import styled from './Title.module.scss';
 const Title = () => {
 
     return (
-        <Link to="/">
+        <Link to="/Hospital-ward">
             <h1 className={styled.title}>
                 CHIRURGIA OGÓLNA
             </h1>

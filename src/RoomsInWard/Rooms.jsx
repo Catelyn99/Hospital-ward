@@ -18,7 +18,7 @@ const Rooms = () => {
         state.rooms.map(room => {
           return (
             <div key={room.id} className={styles.roomContainer}>
-              <Link to={`/room/${room.id}`}>
+              <Link to={`/Hospital-ward/room/${room.id}`}>
                 <Room roomNumber={room.id}
                   roomType={room.type}
                   checkAmountOfPatients={checkAmountOfPatients(room.id)}
