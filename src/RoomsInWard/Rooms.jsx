@@ -1,125 +1,54 @@
 import Room from "./Room";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import BedsContext from "../Contexts/BedsContext"
-import { useState } from "react";
-import AreasStructure from "../InsideRoom/AreasStructure";
+import { useContext, useState } from "react";
 import styles from './Rooms.module.scss';
+import { Context } from "../Store/Store";
 
 
 const Rooms = (props) => {
 
-  const setAreas = () => {
-    const areas = [];
-    for (let a = 1; a <= props.room.amount; a++) {
-      areas.push({
-        id: a,
-        bed: { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: a }
-      });
-    }
-    return areas;
-  }
+  const [state, dispatch] = useContext(Context);
 
   const [bedsState, setBedsState] = useState({
-    areas: setAreas(),
     showPatient: null,
     activeBed: null
   });
 
+  const findRoom = () => state.rooms.find(room => room.id === props.match.params.id);
+
   const addBed = (id) => {
-    const bed = { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: id };
-    if (bedsState.areas.find(area => area.id === id)) {
-      setBedsState({
-        ...bedsState,
-        areas: bedsState.areas.map(area => {
-          if (area.id === id) {
-            return { ...area, bed };
-          }
-          return area;
-        })
-      });
-    } else {
-      setBedsState({
-        ...bedsState,
-        areas: [
-          ...bedsState.areas,
-          {
-            id: id,
-            bed: bed
-          }
-        ]
-      });
-    }
+    dispatch({ type: 'ADD_BED', payload: { roomId: props.match.params.id, areaId: id } });
   }
 
   const deleteBed = (id) => {
-    console.log(bedsState.areas.map(area => area.bed).length);
-    if (bedsState.areas.filter(area => area.bed !== null).map(area => area.bed).length === 1) {
-      alert('Przepraszamy, na sali musi pozostać 1 łóżko.');
-      return;
-    }
-    setBedsState({
-      ...bedsState,
-      showPatient: null,
-      areas: bedsState.areas.map(area => {
-        if (area.id === id) {
-          area.bed = null;
-        }
-
-        return area;
-      })
-    });
+    dispatch({ type: 'DELETE_BED', payload: { roomId: props.match.params.id, areaId: id } });
   }
 
   const showPatientInfo = (id) => {
-    const selectedBed = bedsState.areas.find(element => element.id === id).bed;
+    const selectedBed = findRoom().areas.find(element => element.id === id).bed;
     if (bedsState.showPatient !== selectedBed) {
       setBedsState({
         showPatient: selectedBed,
-        areas: bedsState.areas,
         activeBed: id
       });
     } else {
       setBedsState({
         showPatient: null,
-        areas: bedsState.areas,
         activeBed: null
       });
     }
   }
 
   const saveInfo = (info) => {
-    const areas = bedsState.areas.map(area => {
-      if (area.id === info.id) {
-        area.bed = info;
-      }
-      return area;
-    });
-
-    setBedsState({
-      ...bedsState,
-      areas: areas
-    });
+    dispatch({ type: 'SAVE_INFO', payload: { roomId: props.match.params.id, info: info } });
   }
 
   const cleanInfo = (info) => {
-    const areas = bedsState.areas.map(area => {
-      if (area.id === info.id) {
-        Object.entries(info).forEach(([key, value]) => {
-          info[key] = key !== 'id' ? "" : value;
-        });
-        return {...area, bed: info};
-      }
-      return area;
-    });
-
-    setBedsState({
-      ...bedsState,
-      areas: areas
-    });
+    dispatch({ type: 'CLEAN_INFO', payload: { roomId: props.match.params.id, info: info } });
   }
 
-  const checkAmountOfPatients = () =>
-    bedsState.areas.map(area => area.bed).filter(patient => patient.name !== "").length;
+  const checkAmountOfPatients = () => findRoom().areas.map(area => area.bed).filter(patient => patient.name !== "").length;
 
 
   return (
@@ -132,23 +61,16 @@ const Rooms = (props) => {
       active: bedsState.activeBed
     }}>
       {
-        props.openedRoom === null ?
-          <div className={styles.roomContainer} onClick={props.showRoom}>
-            <Link to={{
-    pathname: "/room/",
-    search: `id=${props.room.id}`,
-  }}>
+        <div className={styles.roomContainer}>
+          <Link to={{
+            pathname: `/room/${props.room.id}`
+          }}>
             <Room roomNumber={props.room.id}
               roomType={props.room.type}
               checkAmountOfPatients={checkAmountOfPatients()}
-               />
-               </Link>
-          </div> :
-          props.openedRoom === props.room ?
-            <AreasStructure
-              areas={bedsState.areas}
-              showPatient={bedsState.showPatient}
-            /> : null
+            />
+          </Link>
+        </div>
       }
     </BedsContext.Provider>
   );
