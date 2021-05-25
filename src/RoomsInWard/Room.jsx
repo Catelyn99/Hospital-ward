@@ -15,12 +15,20 @@ const Room = props => {
         }
     }
 
+    const getHeader = () => {
+        switch (props.roomType) {
+            case 'isolation':
+                return `IZOLATKA`;
+            case 'intensive':
+                return `SIOM`;
+            default:
+                return `SALA ${props.roomNumber}`;
+        }
+    }
+
     return (
         <div className={[style.room, getStyle()].join(' ')}>
-            {
-                props.roomType === 'normal' ?
-                    <p>SALA {props.roomNumber}</p> : null
-            }
+            <p>{getHeader()}</p>
             <p className={style.amountPatient}>Stan pacjentów: {props.checkAmountOfPatients}</p>
         </div>
     )

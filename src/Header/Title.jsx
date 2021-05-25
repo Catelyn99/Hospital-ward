@@ -4,13 +4,9 @@ import styled from './Title.module.scss';
 
 const Title = () => {
 
-    function refresh() {
-        return window.location.reload(true);
-    }
-
     return (
         <Link to="/">
-            <h1 onClick={refresh} className={styled.title}>
+            <h1 className={styled.title}>
                 CHIRURGIA OGÓLNA
             </h1>
         </Link>

@@ -51,12 +51,12 @@ const initialState = {
             amount: 3,
             areas: setAreas(3)
           }, {
-            id: 'IZOLATKA',
+            id: 8,
             type: 'isolation',
             amount: 1,
             areas: setAreas(1)
           }, {
-            id: 'SIOM',
+            id: 9,
             type: 'intensive',
             amount: 2,
             areas: setAreas(2)
