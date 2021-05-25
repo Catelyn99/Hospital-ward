@@ -14,8 +14,8 @@ const App = () => {
       <Router>
         <Title />
         <Switch>
-          <Route exact path="/" component={Rooms} />
-          <Route path="/room/:id" component={AreasStructure} />
+          <Route exact path="/Hospital-ward" component={Rooms} />
+          <Route path="/Hospital-ward/room/:id" component={AreasStructure} />
         </Switch>
       </Router>
     </Store>
