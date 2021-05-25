@@ -5,13 +5,27 @@ const WardReducer = (state, action) => {
                 ...state,
                 rooms: state.rooms.map(room => {
                     if (action.payload.roomId === room.id) {
-                        room.areas = room.areas.map(area => {
-                            if (area.id === action.payload.areaId) {
-                                const bed = { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: area.id };
-                                return { ...area, bed };
+                        const bed = { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: action.payload.areaId };
+
+                        if(action.payload.areaId > room.areas.length) {
+                            return {
+                                ...room,
+                                areas: [
+                                    ...room.areas, 
+                                    { id: action.payload.areaId, bed }
+                                ]
                             }
-                            return area;
-                        });
+                        }
+
+                        return {
+                            ...room,
+                            areas: room.areas.map(area => {
+                                if (area.id === action.payload.areaId) {
+                                    return { ...area, bed };
+                                }
+                                return area;
+                            })
+                        };
                     }
 
                     return room;
@@ -24,7 +38,7 @@ const WardReducer = (state, action) => {
                     if (action.payload.roomId === room.id) {
                         if (room.areas.filter(area => area.bed !== null).length === 1) {
                             alert('Przepraszamy, na sali musi pozostać 1 łóżko.');
-                            return { ...state };
+                            return room;
                         }
 
                         return {

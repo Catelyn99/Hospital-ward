@@ -16,6 +16,10 @@ const Bed = (props) => {
     });
 
     const deleteBed = (id) => {
+        if(bedsContext.active !== null ){
+            alert('Nie możesz usunąć łóżka, kiedy formularz jest włączony.');
+            return;
+        }
         dispatch({ type: 'DELETE_BED', payload: { roomId:  props.roomId, areaId: id } });
     }
 
