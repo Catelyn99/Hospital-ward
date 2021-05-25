@@ -1,151 +1,35 @@
-import Room from "./Room";
-import BedsContext from "../Contexts/BedsContext"
-import { useState } from "react";
-import AreasStructure from "../InsideRoom/AreasStructure";
 import styles from './Rooms.module.scss';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { Context } from '../Store/Store';
+import Room from './Room';
 
-const Rooms = (props) => {
+const Rooms = () => {
 
-  const setAreas = () => {
-    const areas = [];
-    for (let a = 1; a <= props.room.amount; a++) {
-      areas.push({
-        id: a,
-        bed: { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: a }
-      });
-    }
-    return areas;
-  }
+  const [state] = useContext(Context);
 
-  const [bedsState, setBedsState] = useState({
-    areas: setAreas(),
-    showPatient: null,
-    activeBed: null
-  });
-
-  const addBed = (id) => {
-    const bed = { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: id };
-    if (bedsState.areas.find(area => area.id === id)) {
-      setBedsState({
-        ...bedsState,
-        areas: bedsState.areas.map(area => {
-          if (area.id === id) {
-            area.bed = bed;
-          }
-          return area;
-        })
-      });
-    } else {
-      setBedsState({
-        ...bedsState,
-        areas: [
-          ...bedsState.areas,
-          {
-            id: id,
-            bed: bed
-          }
-        ]
-      });
-    }
-  }
-
-  const deleteBed = (id) => {
-    //debugger;
-    console.log(bedsState.areas.map(area => area.bed).length);
-    if (bedsState.areas.filter(area => area.bed !== null).map(area => area.bed).length === 1) {
-      alert('Przepraszamy, na sali musi pozostać 1 łóżko.');
-      return;
-    }
-    setBedsState({
-      ...bedsState,
-      showPatient: null,
-      areas: bedsState.areas.map(area => {
-        if (area.id === id) {
-          area.bed = null;
-        }
-
-        return area;
-      })
-    });
-  }
-
-  const showPatientInfo = (id) => {
-    const selectedBed = bedsState.areas.find(element => element.id === id).bed;
-    if (bedsState.showPatient !== selectedBed) {
-      setBedsState({
-        showPatient: selectedBed,
-        areas: bedsState.areas,
-        activeBed: id
-      });
-    } else {
-      setBedsState({
-        showPatient: null,
-        areas: bedsState.areas,
-        activeBed: null
-      });
-    }
-  }
-
-  const saveInfo = (info) => {
-    const areas = bedsState.areas.map(area => {
-      if (area.id === info.id) {
-        area.bed = info;
-      }
-      return area;
-    });
-
-    setBedsState({
-      ...bedsState,
-      areas: areas
-    });
-  }
-
-  const cleanInfo = (info) => {
-    const areas = bedsState.areas.map(area => {
-      if (area.id === info.id) {
-        Object.entries(info).forEach(([key, value]) => {
-          info[key] = key !== 'id' ? "" : value;
-        });
-        area.bed = info;
-      }
-      return area;
-    });
-
-    setBedsState({
-      ...bedsState,
-      areas: areas
-    });
-  }
-
-  const checkAmountOfPatients = () =>
-    bedsState.areas.map(area => area.bed).filter(patient => patient.name !== "").length;
-
+  const checkAmountOfPatients = (id) =>
+      state.rooms.find(room => room.id === id)
+      .areas.map(area => area.bed).filter(patient => patient.name !== "").length;
 
   return (
-    <BedsContext.Provider value={{
-      showPatientInfo: showPatientInfo,
-      saveInfo: saveInfo,
-      cleanInfo: cleanInfo,
-      deleteBed: deleteBed,
-      addBed: addBed,
-      active: bedsState.activeBed
-    }}>
+    <div className={styles.container}>
       {
-        props.openedRoom === null ?
-          <div className={styles.roomContainer} onClick={props.showRoom}>
-            <Room roomNumber={props.room.id}
-              roomType={props.room.type}
-              checkAmountOfPatients={checkAmountOfPatients()} />
-          </div> :
-          props.openedRoom === props.room ?
-            <AreasStructure
-              areas={bedsState.areas}
-              showPatient={bedsState.showPatient}
-            /> : null
+        state.rooms.map(room => {
+          return (
+            <div key={room.id} className={styles.roomContainer}>
+              <Link to={`/room/${room.id}`}>
+                <Room roomNumber={room.id}
+                  roomType={room.type}
+                  checkAmountOfPatients={checkAmountOfPatients(room.id)}
+                />
+              </Link>
+            </div>
+          );
+        })
       }
-    </BedsContext.Provider>
-  );
+    </div>
+  )
 }
-
 
 export default Rooms;

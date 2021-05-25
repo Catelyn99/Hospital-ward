@@ -1,13 +1,23 @@
 import React, { useState, useContext } from 'react';
-import BedsContext from '../Contexts/BedsContext';
+import ReactDOM from "react-dom";
+import { Context } from '../Store/Store';
 import styled from './Patient.module.scss';
 
 const Patient = (props) => {
-    const bedsContext = useContext(BedsContext);
+  const [state, dispatch] = useContext(Context);
 
     const [formState, setFormState] = useState({
         ...props.patient
     });
+
+    const saveInfo = (info) => {
+        dispatch({ type: 'SAVE_INFO', payload: { roomId:  props.roomId, info: info } });
+      }    
+
+      const cleanInfo = (info) => {
+        dispatch({ type: 'CLEAN_INFO', payload: { roomId:  props.roomId, info: info } });
+      }
+    
 
     const handleInputChange = (event) => {
         const name = event.target.name;
@@ -21,11 +31,11 @@ const Patient = (props) => {
 
     const saveForm = (event) => {
         event.preventDefault();
-        bedsContext.saveInfo(formState);
+        saveInfo(formState);
     }
 
     const cleanPatient = () => {
-        bedsContext.cleanInfo(formState);
+        cleanInfo(formState);
         setFormState({
             ...formState,
             name: '',
@@ -36,7 +46,7 @@ const Patient = (props) => {
         });
     }
 
-    return (
+    return ReactDOM.createPortal(
         <form className={styled.form} onSubmit={saveForm}>
             {props.patient.name === "" ?
                     <div className={styled.headerBed}>Dodaj pacjenta</div> :
@@ -65,7 +75,7 @@ const Patient = (props) => {
              <textarea name="tasks" cols="75" rows="10" value={formState.tasks} onChange={handleInputChange} />
             </label>
             <input className={`${styled.buttons} ${styled.submit}`} type="submit" value="ZAPISZ" />
-        </form>
+        </form>, document.body
     )
 }
 

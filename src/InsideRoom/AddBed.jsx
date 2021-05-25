@@ -1,16 +1,20 @@
 import commonStyles from './Common.module.scss';
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import React, { useContext } from 'react';
-import BedsContext from '../Contexts/BedsContext';
+import { Context } from '../Store/Store';
 
 
 const AddBed = (props) => {
-    const bedsContext = useContext(BedsContext);
+    const [state, dispatch] = useContext(Context);
+
+    const addBed = (id) => {
+        dispatch({ type: 'ADD_BED', payload: { roomId:  props.roomId, areaId: id } });
+      }
 
     return (
-        <div onClick={() => bedsContext.addBed(props.id)}
+        <div onClick={() => addBed(props.id)}
         className={`${commonStyles.patientBed} ${commonStyles.addBed} ${commonStyles.containerItem}`}>
-            <span>DODAJ ŁÓŻKO </span>
+            <span>DODAJ ŁÓŻKO {props.id}</span>
            <div className={commonStyles.addBedIcon}><LocalHospitalIcon fontSize="inherit" /></div>
           </div>
     )
