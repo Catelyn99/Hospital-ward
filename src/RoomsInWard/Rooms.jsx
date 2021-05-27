@@ -10,7 +10,7 @@ const Rooms = () => {
 
   const checkAmountOfPatients = (id) =>
       state.rooms.find(room => room.id === id)
-      .areas.map(area => area.bed).filter(patient => patient.name !== "").length;
+      .areas.map(area => area.bed).filter(patient => patient !== null && patient.name !== "" ).length;
 
   return (
     <div className={styles.container}>
