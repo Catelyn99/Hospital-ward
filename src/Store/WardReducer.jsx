@@ -1,4 +1,4 @@
-const WardReducer = (state, action) => {
+const wardReducer = (state, action) => {
     switch (action.type) {
         case 'ADD_BED':
             return {
@@ -83,10 +83,11 @@ const WardReducer = (state, action) => {
                             ...room,
                             areas: room.areas.map(area => {
                                 if (area.id === action.payload.info.id) {
-                                    Object.entries(action.payload.info).forEach(([key, value]) => {
-                                        action.payload.info[key] = key !== 'id' ? "" : value;
-                                    });
-                                    return { ...area, bed: action.payload.info };
+                                    const bedCleaned = Object.entries(action.payload.info).reduce((acc, [key, value]) => {
+                                       acc[key] = key === 'id' ? value : "";
+                                       return acc;
+                                    }, {});
+                                    return { ...area, bed: bedCleaned };
                                 }
                                 return area;
                             })
@@ -103,4 +104,4 @@ const WardReducer = (state, action) => {
 };
 
 
-export default WardReducer;
+export default wardReducer;

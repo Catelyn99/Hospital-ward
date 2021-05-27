@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import WardReducer from "./WardReducer";
+import wardReducer from "./wardReducer";
 
 
 const setAreas = (amount) => {
@@ -64,7 +64,7 @@ const initialState = {
 };
 
 const Store = ({children}) => {
-   const [state, dispatch] = useReducer(WardReducer, initialState);
+   const [state, dispatch] = useReducer(wardReducer, initialState);
     return (
         <Context.Provider value={[state, dispatch]}> 
             {children}
