@@ -23,9 +23,7 @@ const Area = (props) => {
                             roomId={props.roomId} /> : null
                     }
                 </>
-                : props.showPatient === null ?
-                    <AddBed roomId={props.roomId} id={props.area.id}/>
-                     : null}
+                : <AddBed roomId={props.roomId} id={props.area.id}/>}
         </>
     )
 }
