@@ -1,27 +1,15 @@
 import React, { useState, useContext } from 'react';
 import ReactDOM from "react-dom";
-import BedsContext from '../Contexts/BedsContext';
 import { Context } from '../Store/Store';
 import styled from './Patient.module.scss';
 import CloseIcon from '@material-ui/icons/Close';
 
 const Patient = (props) => {
-  const [state, dispatch] = useContext(Context);
-  const bedsContext = useContext(BedsContext);
-
+    const [state, dispatch] = useContext(Context);
 
     const [formState, setFormState] = useState({
         ...props.patient
     });
-
-    const saveInfo = (info) => {
-        dispatch({ type: 'SAVE_INFO', payload: { roomId:  props.roomId, info: info } });
-      }    
-
-      const cleanInfo = (info) => {
-        dispatch({ type: 'CLEAN_INFO', payload: { roomId:  props.roomId, info: info } });
-      }
-    
 
     const handleInputChange = (event) => {
         const name = event.target.name;
@@ -35,11 +23,12 @@ const Patient = (props) => {
 
     const saveForm = (event) => {
         event.preventDefault();
-        saveInfo(formState);
+        dispatch({ type: 'SAVE_INFO', payload: { roomId: props.roomId, info: formState } });
+        props.closePatientInfo();
     }
 
     const cleanPatient = () => {
-        cleanInfo(formState);
+        dispatch({ type: 'CLEAN_INFO', payload: { roomId: props.roomId, info: formState } });
         setFormState({
             ...formState,
             name: '',
@@ -50,12 +39,16 @@ const Patient = (props) => {
         });
     }
 
+    if (!props.isOpen) {
+        return null;
+    }
+
     return ReactDOM.createPortal(
         <form className={styled.form} onSubmit={saveForm}>
-            <CloseIcon fontSize="medium" className={styled.closeIcon} onClick={() => bedsContext.closePatientInfo(props.patient.id)} />
+            <CloseIcon fontSize="medium" className={styled.closeIcon} onClick={() => props.closePatientInfo()} />
             {props.patient.name === "" ?
-                    <div className={styled.headerBed}>Dodaj pacjenta - łóżko {props.patient.id}</div> :
-                <> 
+                <div className={styled.headerBed}>Dodaj pacjenta - łóżko {props.patient.id}</div> :
+                <>
                     <button onClick={cleanPatient} className={`${styled.buttons} ${styled.remove}`}>USUŃ</button>
                     <div className={styled.headerBed}>Edytuj</div>
                 </>}

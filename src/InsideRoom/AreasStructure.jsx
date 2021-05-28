@@ -5,6 +5,7 @@ import BedsContext from "../Contexts/BedsContext";
 import AddBed from './AddBed';
 import { Context } from '../Store/Store';
 import { unblur, blur } from '../Popup/Blur';
+import Patient from '../AboutPatient/Patient';
 
 const AreasStructure = (props) => {
 
@@ -12,30 +13,30 @@ const AreasStructure = (props) => {
 
   const [bedsState, setBedsState] = useState({
     showPatient: null,
-    activeBed: null
+    activeBed: null,
+    isPatientInfoOpen: false
   });
 
   const findRoom = () => state.rooms.find(room => room.id === Number(props.match.params.id));
 
-  const showPatientInfo = (id) => {
+  const showPatientInfo = (id) => {console.log(id);
     const selectedBed = findRoom().areas.find(element => element.id === id).bed;
     if (bedsState.showPatient !== selectedBed) {
       setBedsState({
         showPatient: selectedBed,
-        activeBed: id
+        activeBed: selectedBed,
+        isPatientInfoOpen: true
       });
     }
     blur();
   }
 
-  const closePatientInfo = (id) => {
-    const selectedBed = findRoom().areas.find(element => element.id === id).bed;
-    if (bedsState.showPatient === selectedBed) {
+  const closePatientInfo = () => {
       setBedsState({
         showPatient: null,
-        activeBed: null
+        activeBed: null,
+        isPatientInfoOpen: false
       });
-    }
     unblur();
   }
 
@@ -43,16 +44,14 @@ const AreasStructure = (props) => {
   const areasHTML = findRoom().areas.map(area =>
     <div className={commonStyles.containerItem} key={area.id}>
       <Area area={area}
-        roomId={Number(props.match.params.id)}
-        showPatient={bedsState.showPatient} />
+        roomId={Number(props.match.params.id)} />
     </div>
   )
 
   return (
     <BedsContext.Provider value={{
-      showPatientInfo: showPatientInfo,
-      closePatientInfo: closePatientInfo,
-      active: bedsState.activeBed
+      active: bedsState.activeBed?.id,
+      showPatientInfo: showPatientInfo
     }}>
       <div className={commonStyles.container} >
         {areasHTML}
@@ -64,6 +63,11 @@ const AreasStructure = (props) => {
             : null
         }
       </div>
+
+<Patient patient={bedsState.activeBed}
+  roomId={props.roomId}
+  closePatientInfo={closePatientInfo}
+  isOpen={bedsState.isPatientInfoOpen} />
     </BedsContext.Provider>
   );
 }
