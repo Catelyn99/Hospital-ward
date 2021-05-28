@@ -1,10 +1,14 @@
 import React, { useState, useContext } from 'react';
 import ReactDOM from "react-dom";
+import BedsContext from '../Contexts/BedsContext';
 import { Context } from '../Store/Store';
 import styled from './Patient.module.scss';
+import CloseIcon from '@material-ui/icons/Close';
 
 const Patient = (props) => {
   const [state, dispatch] = useContext(Context);
+  const bedsContext = useContext(BedsContext);
+
 
     const [formState, setFormState] = useState({
         ...props.patient
@@ -48,8 +52,9 @@ const Patient = (props) => {
 
     return ReactDOM.createPortal(
         <form className={styled.form} onSubmit={saveForm}>
+            <CloseIcon fontSize="medium" className={styled.closeIcon} onClick={() => bedsContext.closePatientInfo(props.patient.id)} />
             {props.patient.name === "" ?
-                    <div className={styled.headerBed}>Dodaj pacjenta</div> :
+                    <div className={styled.headerBed}>Dodaj pacjenta - łóżko {props.patient.id}</div> :
                 <> 
                     <button onClick={cleanPatient} className={`${styled.buttons} ${styled.remove}`}>USUŃ</button>
                     <div className={styled.headerBed}>Edytuj</div>
