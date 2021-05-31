@@ -1,71 +1,36 @@
-import React, { useState, useContext } from 'react';
-import ReactDOM from "react-dom";
-import BedsContext from '../Contexts/BedsContext';
-import { Context } from '../Store/Store';
-import styled from './Patient.module.scss';
-import CloseIcon from '@material-ui/icons/Close';
+import { useContext } from "react";
+import { Context } from "../Store/Store";
+import styles from "./Patient.module.scss";
 
 const Patient = (props) => {
 
   const [state, dispatch] = useContext(Context);
-  const bedsContext = useContext(BedsContext);
 
-    const [formState, setFormState] = useState({
-        ...props.patient
-    });
+    const goBack = () => {
+        props.history.goBack()
+      }
 
-    if (bedsContext.isOpenInfoPopup === false) {
-        return null;
-    }
+      const url = props.match.url.split('/');
+      const roomId = Number(url[3]);
+      const areaId = Number(props.match.params.id);
+      const patient = state.rooms.find(room => room.id === roomId).areas.find(area => area.id === areaId).bed;
     
-    const saveInfo = (info) => {
-        dispatch({ type: 'SAVE_INFO', payload: { roomId:  props.roomId, info: info } });
-      }    
-
-    const handleInputChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-
-        setFormState({
-            ...formState,
-            [name]: value
-        });
-    }
-
-    const saveForm = (event) => {
-        event.preventDefault();
-        saveInfo(formState);
-        bedsContext.closePatientInfo(props.patient.id)
-    }
-
-    return ReactDOM.createPortal(
-        <form className={styled.form} onSubmit={saveForm}>
-            <CloseIcon fontSize="medium" className={styled.closeIcon} onClick={() => bedsContext.closePatientInfo(props.patient.id)} />
-            {props.patient.name === "" ?
-                    <div className={styled.headerBed}>Dodaj pacjenta - łóżko {props.patient.id}</div> 
-                    : <div className={styled.headerBed}>Edytuj</div>}
-            <label>
-                Imię i nazwisko:
-        <input className={styled.inputs} required name="name" type="text" value={formState.name} onChange={handleInputChange} />
-            </label>
-            <label>
-                Wiek:
-         <input className={styled.inputs} name="age" type="number" min="0" value={formState.age} onChange={handleInputChange} />
-            </label>
-            <label>
-                Diagnoza lekarska:
-        <textarea name="diagnosis" cols="75" rows="4" wrap="hard" value={formState.diagnosis} onChange={handleInputChange} />
-            </label>
-            <label>
-                Uwagi:
-             <textarea name="comments" cols="75" rows="3" value={formState.comments} onChange={handleInputChange} />
-            </label>
-            <label>
-                Zlecenia:
-             <textarea name="tasks" cols="75" rows="10" value={formState.tasks} onChange={handleInputChange} />
-            </label>
-            <input className={`${styled.buttons} ${styled.submit}`} type="submit" value="ZAPISZ" />
-        </form>, document.body
+      return (
+        <>
+        <nav className={styles.navigation}>
+        <button className={`${styles.navItem} ${styles.back}`} onClick={goBack}>Powrót</button>
+        <div className={styles.navItem}>Edytuj</div>
+        <div className={styles.navItem}>Wskazówki</div>
+        <div className={styles.navItem}>Historia</div>
+        </nav>
+        <div className={styles.information}>
+        <div><h2>Imię i nazwisko:</h2> <span className={styles.inInfo}>{patient.name}</span> </div>
+        <div><h2>Wiek:</h2>  <span className={styles.inInfo}>{patient.age}</span> </div>
+        <div><h2>Diagnoza:</h2>  <span className={styles.inInfo}>{patient.diagnosis}</span> </div>
+        <div><h2>Zlecenia:</h2>  <span className={styles.inInfo}>{patient.tasks}</span> </div>
+        <div><h2>Uwagi:</h2> <span className={styles.inInfo}>{patient.comments}</span> </div>
+        </div>
+        </>
     )
 }
 

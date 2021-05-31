@@ -5,7 +5,7 @@ import BedsContext from "../Contexts/BedsContext";
 import AddBed from './AddBed';
 import { Context } from '../Store/Store';
 import { unblur, blur } from '../Popup/Blur';
-import Patient from '../AboutPatient/Patient';
+import PatientForm from '../AboutPatient/PatientForm';
 
 const AreasStructure = (props) => {
 
@@ -44,7 +44,6 @@ const AreasStructure = (props) => {
     unblur();
   }
 
-
   const areasHTML = findRoom().areas.map(area =>
     <div className={commonStyles.containerItem} key={area.id}>
       <Area area={area}
@@ -55,7 +54,6 @@ const AreasStructure = (props) => {
   return (
     <BedsContext.Provider value={{
       showPatientInfo: showPatientInfo,
-      closePatientInfo: closePatientInfo,
       active: bedsState.activeBed,
       
     }}>
@@ -66,8 +64,9 @@ const AreasStructure = (props) => {
             <AddBed id={findRoom().areas.length + 1}
               roomId={Number(props.match.params.id)}
             />
-            : <Patient isOpenInfoPopup={bedsState.isOpenInfoPopup}
+            : <PatientForm isOpenInfoPopup={bedsState.isOpenInfoPopup}
             patient={bedsState.showPatient} 
+            closePatientInfo={closePatientInfo}
         roomId={Number(props.match.params.id)}
         />
         }
