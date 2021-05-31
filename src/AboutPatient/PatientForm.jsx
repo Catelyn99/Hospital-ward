@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import ReactDOM from "react-dom";
-import BedsContext from '../Contexts/BedsContext';
 import { Context } from '../Store/Store';
 import styled from './PatientForm.module.scss';
 import CloseIcon from '@material-ui/icons/Close';
@@ -8,13 +7,12 @@ import CloseIcon from '@material-ui/icons/Close';
 const PatientForm = (props) => {
 
   const [state, dispatch] = useContext(Context);
-  const bedsContext = useContext(BedsContext);
 
     const [formState, setFormState] = useState({
         ...props.patient
     });
 
-    if (bedsContext.isOpenInfoPopup === false) {
+    if (props.isOpenInfoPopup === false) {
         return null;
     }
     
@@ -35,12 +33,12 @@ const PatientForm = (props) => {
     const saveForm = (event) => {
         event.preventDefault();
         saveInfo(formState);
-        bedsContext.closePatientInfo(props.patient.id)
+        props.closePatientInfo(props.patient.id)
     }
 
     return ReactDOM.createPortal(
         <form className={styled.form} onSubmit={saveForm}>
-            <CloseIcon fontSize="medium" className={styled.closeIcon} onClick={() => bedsContext.closePatientInfo(props.patient.id)} />
+            <CloseIcon fontSize="medium" className={styled.closeIcon} onClick={() => props.closePatientInfo(props.patient.id)} />
             {props.patient.name === "" ?
                     <div className={styled.headerBed}>Dodaj pacjenta - łóżko {props.patient.id}</div> 
                     : <div className={styled.headerBed}>Edytuj</div>}

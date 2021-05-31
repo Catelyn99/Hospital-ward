@@ -1,0 +1,41 @@
+$blue: rgb(116, 156, 241);
+$purple: rgb(223, 112, 233);
+.navigation {
+    display: flex;
+    margin: 5% 0 5%;
+}
+
+.navItem {
+    width: 25%;
+    text-align: center;
+    color: $blue;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 5px;
+    border-radius: 8px;
+    &:hover {
+        cursor: grab;
+        background: $blue;
+        color: white;
+    }
+}
+
+.back {
+    border: 0;
+    color: white;
+    background: $blue;
+    &:hover {
+        background-color: $purple;
+    }
+}
+
+.information {
+    margin: 0 6%;
+}
+
+.inInfo {
+    font-weight: 200;
+    font-size: 18px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}

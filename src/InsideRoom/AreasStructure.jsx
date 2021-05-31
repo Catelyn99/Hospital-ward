@@ -54,7 +54,6 @@ const AreasStructure = (props) => {
   return (
     <BedsContext.Provider value={{
       showPatientInfo: showPatientInfo,
-      closePatientInfo: closePatientInfo,
       active: bedsState.activeBed,
       
     }}>
@@ -67,6 +66,7 @@ const AreasStructure = (props) => {
             />
             : <PatientForm isOpenInfoPopup={bedsState.isOpenInfoPopup}
             patient={bedsState.showPatient} 
+            closePatientInfo={closePatientInfo}
         roomId={Number(props.match.params.id)}
         />
         }
