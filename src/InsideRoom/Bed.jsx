@@ -3,9 +3,10 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import styled from './Bed.module.scss';
 import commonstyles from './Common.module.scss';
-import RemoveBedPopup from '../Popup/RemoveBedPopup';
+import RemovePatientPopup from '../Popup/RemovePatientPopup';
 import { Context } from '../Store/Store';
 import BedsContext from '../Contexts/BedsContext';
+import { blur, unblur } from '../Popup/Blur';
 
 const Bed = (props) => {
     const [state, dispatch] = useContext(Context);
@@ -16,11 +17,11 @@ const Bed = (props) => {
     });
 
     const deleteBed = (id) => {
-        if(bedsContext.active !== null ){
+        if (bedsContext.active !== null) {
             alert('Nie możesz usunąć łóżka, kiedy formularz jest włączony.');
             return;
         }
-        dispatch({ type: 'DELETE_BED', payload: { roomId:  props.roomId, areaId: id } });
+        dispatch({ type: 'DELETE_BED', payload: { roomId: props.roomId, areaId: id } });
     }
 
     const isPatient = () => props.name !== "";
@@ -30,10 +31,7 @@ const Bed = (props) => {
         setBedState({
             isOpenRemovePopup: true
         });
-        document.body.style.overflow = "hidden";
-        const rootStyle = document.querySelector('#root').style;
-        rootStyle.filter = "blur(5px)";
-        rootStyle.pointerEvents = "none";
+        blur();
     }
 
     const onIconClick = (e) => {
@@ -45,11 +43,8 @@ const Bed = (props) => {
         setBedState({
             isOpenRemovePopup: false
         });
+        unblur();
 
-        document.body.style.overflow = "initial";
-        const rootStyle = document.querySelector('#root').style;
-        rootStyle.filter = "initial";
-        rootStyle.pointerEvents = "initial";
     }
 
     const rejectPopup = (e) => {
@@ -64,21 +59,22 @@ const Bed = (props) => {
     }
     return (
         <div
-            onClick={() => bedsContext.showPatientInfo(props.id)}
+            onClick={() => 
+                bedsContext.showPatientInfo(props.id)}
             className={`${commonstyles.patientBed} 
                 ${isPatient() ? commonstyles.fillBed : commonstyles.emptyBed}
                 ${bedsContext.active === props.id ? commonstyles.active : null}`}>
 
             <div className={`${styled.headerBed} ${isPatient() ? styled.active : styled.empty}`}>
                 <span>ŁÓŻKO {props.id}</span>
-                <RemoveBedPopup isOpen={bedState.isOpenRemovePopup}
+                <RemovePatientPopup isOpen={bedState.isOpenRemovePopup}
                     onAccept={acceptPopup}
                     onReject={rejectPopup}
                 />
                 <DeleteForeverIcon onClick={onIconClick} />
             </div>
             {
-               isPatient() ?
+                isPatient() ?
                     <> <p className={commonstyles.fillBed}>Pacjent: {props.name}</p>
                         <p className={commonstyles.fillBed}>Wiek: {props.age}</p> </> :
                     <><div className={styled.createPatientIcon}><PersonAddIcon fontSize="inherit" /></div>

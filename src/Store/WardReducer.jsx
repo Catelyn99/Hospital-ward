@@ -74,28 +74,6 @@ const wardReducer = (state, action) => {
                     return room;
                 })
             };
-        case 'CLEAN_INFO':
-            return {
-                ...state,
-                rooms: state.rooms.map(room => {
-                    if (room.id === action.payload.roomId) {
-                        return {
-                            ...room,
-                            areas: room.areas.map(area => {
-                                if (area.id === action.payload.info.id) {
-                                    const bedCleaned = Object.entries(action.payload.info).reduce((acc, [key, value]) => {
-                                       acc[key] = key === 'id' ? value : "";
-                                       return acc;
-                                    }, {});
-                                    return { ...area, bed: bedCleaned };
-                                }
-                                return area;
-                            })
-                        }
-                    }
-                    return room;
-                })
-            };
         default:
             return {
                 ...state
