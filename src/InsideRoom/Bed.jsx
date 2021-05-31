@@ -3,7 +3,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import styled from './Bed.module.scss';
 import commonstyles from './Common.module.scss';
-import RemoveBedPopup from '../Popup/RemoveBedPopup';
+import RemovePatientPopup from '../Popup/RemovePatientPopup';
 import { Context } from '../Store/Store';
 import BedsContext from '../Contexts/BedsContext';
 import { blur, unblur } from '../Popup/Blur';
@@ -59,14 +59,15 @@ const Bed = (props) => {
     }
     return (
         <div
-            onClick={() => bedsContext.showPatientInfo(props.id)}
+            onClick={() => 
+                bedsContext.showPatientInfo(props.id)}
             className={`${commonstyles.patientBed} 
                 ${isPatient() ? commonstyles.fillBed : commonstyles.emptyBed}
                 ${bedsContext.active === props.id ? commonstyles.active : null}`}>
 
             <div className={`${styled.headerBed} ${isPatient() ? styled.active : styled.empty}`}>
                 <span>ŁÓŻKO {props.id}</span>
-                <RemoveBedPopup isOpen={bedState.isOpenRemovePopup}
+                <RemovePatientPopup isOpen={bedState.isOpenRemovePopup}
                     onAccept={acceptPopup}
                     onReject={rejectPopup}
                 />
