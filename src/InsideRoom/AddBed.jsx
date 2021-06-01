@@ -11,9 +11,12 @@ const AddBed = (props) => {
         dispatch({ type: 'ADD_BED', payload: { roomId:  props.roomId, areaId: id } });
       }
 
+      if(props.id === 12){
+
+      }
     return (
         <div onClick={() => addBed(props.id)}
-        className={`${commonStyles.patientBed} ${commonStyles.addBed} ${commonStyles.containerItem}`}>
+        className={`${commonStyles.patientBed} ${commonStyles.containerItem} ${props.id > 10 ? commonStyles.stopAddBed : commonStyles.addBed}`}>
             <span>DODAJ ŁÓŻKO {props.id}</span>
            <div className={commonStyles.addBedIcon}><LocalHospitalIcon fontSize="inherit" /></div>
           </div>

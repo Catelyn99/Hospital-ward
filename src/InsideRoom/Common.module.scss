@@ -41,6 +41,13 @@ $emptybed-letters: rgb(61, 61, 231);
             font-size: 80px;
         }
     }
+    &.stopAddBed {
+        background-color: gray;
+        padding-top: 35px;
+        .addBedIcon {
+            font-size: 80px;
+        }
+    }
 }
 
 .container {

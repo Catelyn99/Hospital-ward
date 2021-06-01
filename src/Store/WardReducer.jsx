@@ -7,7 +7,7 @@ const wardReducer = (state, action) => {
                     if (action.payload.roomId === room.id) {
                         const bed = { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: action.payload.areaId };
 
-                        if(action.payload.areaId > room.areas.length) {
+                        if(action.payload.areaId > room.areas.length && action.payload.areaId < 11) {
                             return {
                                 ...room,
                                 areas: [
