@@ -16,9 +16,10 @@ const Area = (props) => {
                         id={bed.id}
                         roomId={props.roomId}
                     />
-                   <Link to={`/Hospital-ward/room/${props.roomId}/patient/${bed.id}`}>
-                        <button className={styles.moreInformation}>Szczegóły</button>
-                    </Link> 
+                    <Link to={`/Hospital-ward/room/${props.roomId}/patient/${bed.id}`}>
+                        {bed.name !== null && bed.name !== "" ?
+                            <button className={styles.moreInformation}>Szczegóły</button> : null}
+                    </Link>
                 </>
                 : <AddBed roomId={props.roomId} id={props.area.id} />}
         </>
