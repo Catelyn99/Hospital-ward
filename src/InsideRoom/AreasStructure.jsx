@@ -14,7 +14,7 @@ const AreasStructure = (props) => {
   const [bedsState, setBedsState] = useState({
     showPatient: null,
     activeBed: null,
-    isOpenInfoPopup: false
+    isOpenFormPopup: false
   });
 
   const findRoom = () => state.rooms.find(room => room.id === Number(props.match.params.id));
@@ -25,7 +25,7 @@ const AreasStructure = (props) => {
       setBedsState({
         showPatient: selectedBed,
         activeBed: id,
-        isOpenInfoPopup: true
+        isOpenFormPopup: true
       });
     }
     blur();
@@ -38,7 +38,7 @@ const AreasStructure = (props) => {
       setBedsState({
         showPatient: null,
         activeBed: null,
-        isOpenInfoPopup: false
+        isOpenFormPopup: false
       });
     }
     unblur();
@@ -64,7 +64,7 @@ const AreasStructure = (props) => {
             <AddBed id={findRoom().areas.length + 1}
               roomId={Number(props.match.params.id)}
             />
-            : <PatientForm isOpenInfoPopup={bedsState.isOpenInfoPopup}
+            : <PatientForm isOpenInfoPopup={bedsState.isOpenFormPopup}
             patient={bedsState.showPatient} 
             closePatientInfo={closePatientInfo}
         roomId={Number(props.match.params.id)}

@@ -12,7 +12,7 @@ const PatientForm = (props) => {
         ...props.patient
     });
 
-    if (props.isOpenInfoPopup === false) {
+    if (props.isOpenFormPopup === false) {
         return null;
     }
     
