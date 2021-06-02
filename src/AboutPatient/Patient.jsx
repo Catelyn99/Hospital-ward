@@ -1,7 +1,6 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../Store/Store";
 import styles from "./Patient.module.scss";
-import PatientForm from "./PatientForm";
 
 const Patient = (props) => {
 
@@ -18,6 +17,7 @@ const Patient = (props) => {
 
   return (
     <>
+    <span className={styles.bedName}>POKÓJ {roomId} - ŁÓŻKO {areaId}</span>
       <nav className={styles.navigation}>
         <button className={`${styles.navItem} ${styles.back}`} onClick={goBack}>Powrót</button>
         <div className={styles.navItem}>Edytuj</div>
