@@ -41,7 +41,7 @@ const PatientForm = (props) => {
             <CloseIcon fontSize="medium" className={styled.closeIcon} onClick={() => props.closePatientInfo(props.patient.id)} />
             {props.patient.name === "" ?
                     <div className={styled.headerBed}>Dodaj pacjenta - łóżko {props.patient.id}</div> 
-                    : <div className={styled.headerBed}>Edytuj</div>}
+                    : <div className={styled.headerBed}>Edytuj pacjenta - łóżko {props.patient.id}</div>}
             <label>
                 Imię i nazwisko:
         <input className={styled.inputs} required name="name" type="text" value={formState.name} onChange={handleInputChange} />

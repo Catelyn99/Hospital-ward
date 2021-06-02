@@ -17,14 +17,14 @@ const initialState = {
         rooms: [
           {
             id: 1,
-            type: 'normal',
-            amount: 3,
-            areas: setAreas(3)
+            type: 'isolation',
+            amount: 1,
+            areas: setAreas(1)
           }, {
             id: 2,
-            type: 'normal',
-            amount: 3,
-            areas: setAreas(3)
+            type: 'intensive',
+            amount: 2,
+            areas: setAreas(2)
           }, {
             id: 3,
             type: 'normal',
@@ -52,15 +52,15 @@ const initialState = {
             areas: setAreas(3)
           }, {
             id: 8,
-            type: 'isolation',
-            amount: 1,
-            areas: setAreas(1)
+            type: 'normal',
+            amount: 3,
+            areas: setAreas(3)
           }, {
             id: 9,
-            type: 'intensive',
-            amount: 2,
-            areas: setAreas(2)
-          }],
+            type: 'normal',
+            amount: 3,
+            areas: setAreas(3)
+          }, ],
 };
 
 const Store = ({children}) => {
