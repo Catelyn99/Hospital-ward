@@ -17,7 +17,9 @@ const Patient = (props) => {
 
   return (
     <>
-    <span className={styles.bedName}>POKÓJ {roomId} - ŁÓŻKO {areaId}</span>
+      <div className={styles.bedName}>
+        <span className={styles.bedNameText}>POKÓJ {roomId} - ŁÓŻKO {areaId}</span>
+      </div>
       <nav className={styles.navigation}>
         <button className={`${styles.navItem} ${styles.back}`} onClick={goBack}>Powrót</button>
         <div className={styles.navItem}>Edytuj</div>

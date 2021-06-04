@@ -29,7 +29,7 @@ const Room = props => {
     return (
         <div className={[style.room, getStyle()].join(' ')}>
             <p>{getHeader()}</p>
-            <p className={style.amountPatient}>Stan pacjentów: {props.checkAmountOfPatients}</p>
+            <p>Stan pacjentów: {props.checkAmountOfPatients}</p>
         </div>
     )
 }
