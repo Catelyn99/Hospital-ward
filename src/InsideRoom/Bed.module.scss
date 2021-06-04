@@ -18,19 +18,3 @@ $emptybed-letters: rgb(61, 61, 231);
 .createPatientIcon {
     font-size: 80px;
 }
-
-input {
-    width: 45%;
-    height: 25px;
-}
-
-.inputAge {
-    float: right;
-}
-
-@media (max-width: 768px) {
-    input {
-        width: 40%;
-        height: 20px;
-    }
-}

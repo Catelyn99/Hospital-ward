@@ -41,12 +41,12 @@ $purple: rgb(223, 112, 233);
 }
 
 .bedName {
-    border-radius: 22%;
-    padding: 10px;
     text-align: center;
+}
+
+.bedNameText {
     background: #df70e9;
+    padding: 10px;
     color: white;
-    width: 24%;
-    display: block;
-    margin: 0 auto;
+    border-radius: 8px;
 }

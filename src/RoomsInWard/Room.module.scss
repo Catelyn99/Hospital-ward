@@ -1,67 +1,56 @@
-$primary-color: rgb(139, 183, 209);
-$isolation-color: rgb(9, 255, 0);
-$intensive-color: rgb(235, 35, 35);
-.room {
-    height: 260px;
-    margin: 10% 2%;
-    border-radius: 6px;
-    text-align: center;
-    border-width: 3px;
-    border-style: solid;
-    font-weight: 500;
-    font-size: 30px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    &:hover {
-        transition: all 0.3s ease;
-        cursor: pointer;
-        background-color: whitesmoke;
-    }
-}
-
-.roomPrimary {
-    border-color: $primary-color;
-    background-color: $primary-color;
-    color: rgb(25, 25, 158);
-}
-
-.roomIntensive {
-    border-color: $intensive-color;
-    background-color: $intensive-color;
-    color: rgb(88, 21, 21);
-}
-
-.roomIsolation {
-    background-color: $isolation-color;
-    border-color: $isolation-color;
-    color: rgb(5, 66, 5);
-}
-
-.amountPatient {
-    text-align: center;
-    font-size: 30px;
-}
-
-@media (max-width: 410px) {
+    $primary-color: rgb(139, 183, 209);
+    $isolation-color: rgb(9, 255, 0);
+    $intensive-color: rgb(235, 35, 35);
     .room {
-        margin-left: 0;
-        margin-right: 0;
+        height: 260px;
+        margin: 10% 2%;
+        border-radius: 6px;
+        text-align: center;
+        border-width: 3px;
+        border-style: solid;
+        font-weight: 500;
+        font-size: 30px;
+        &:hover {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background-color: whitesmoke;
+        }
     }
-    .room,
-    .amountPatient {
-        font-size: 16px;
+    
+    .roomPrimary {
+        border-color: $primary-color;
+        background-color: $primary-color;
+        color: rgb(25, 25, 158);
     }
-}
-
-@media (max-width: 780px) {
-    .room,
-    .amountPatient {
-        font-size: 18px;
+    
+    .roomIntensive {
+        border-color: $intensive-color;
+        background-color: $intensive-color;
+        color: rgb(88, 21, 21);
     }
-}
-
-@media (max-width: 920px) {
-    .room,
-    .amountPatient {
-        font-size: 25px;
+    
+    .roomIsolation {
+        background-color: $isolation-color;
+        border-color: $isolation-color;
+        color: rgb(5, 66, 5);
     }
-}
+    
+    @media (max-width: 410px) {
+        .room {
+            margin-left: 0;
+            margin-right: 0;
+            font-size: 16px;
+        }
+    }
+    
+    @media (max-width: 780px) {
+        .room {
+            font-size: 18px;
+        }
+    }
+    
+    @media (max-width: 920px) {
+        .room {
+            font-size: 25px;
+        }
+    }
