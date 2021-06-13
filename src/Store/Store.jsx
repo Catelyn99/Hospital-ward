@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import wardReducer from "./wardReducer";
+import wardReducer from "./WardReducer";
 
 
 const setAreas = (amount) => {

@@ -1,18 +1,20 @@
+import { ADD_BED, DELETE_BED, DELETE_ROOM, MAX_AMOUNT_OF_BEDS, SAVE_INFO } from "./constants";
+
 const wardReducer = (state, action) => {
     switch (action.type) {
-        case 'DELETE_ROOM':
+        case DELETE_ROOM:
             return {
                 ...state,
                 rooms: state.rooms.filter(room => room.id !== action.payload.id)
             }
-        case 'ADD_BED':
+        case ADD_BED:
             return {
                 ...state,
                 rooms: state.rooms.map(room => {
                     if (action.payload.roomId === room.id) {
                         const bed = { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: action.payload.areaId };
 
-                        if (action.payload.areaId > room.areas.length && action.payload.areaId < 11) {
+                        if (action.payload.areaId > room.areas.length && action.payload.areaId < MAX_AMOUNT_OF_BEDS) {
                             return {
                                 ...room,
                                 areas: [
@@ -36,7 +38,7 @@ const wardReducer = (state, action) => {
                     return room;
                 })
             };
-        case 'DELETE_BED':
+        case DELETE_BED:
             return {
                 ...state,
                 rooms: state.rooms.map(room => {
@@ -60,7 +62,7 @@ const wardReducer = (state, action) => {
                     return room;
                 })
             };
-        case 'SAVE_INFO':
+        case SAVE_INFO:
             return {
                 ...state,
                 rooms: state.rooms.map(room => {
