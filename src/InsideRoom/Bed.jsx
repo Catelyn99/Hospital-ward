@@ -7,6 +7,7 @@ import RemovePatientPopup from '../Popup/RemovePatientPopup';
 import { Context } from '../Store/Store';
 import BedsContext from '../Contexts/BedsContext';
 import { blur, unblur } from '../Popup/Blur';
+import { DELETE_BED } from '../Store/constants';
 
 const Bed = (props) => {
     const [state, dispatch] = useContext(Context);
@@ -21,7 +22,7 @@ const Bed = (props) => {
             alert('Nie możesz usunąć łóżka, kiedy formularz jest włączony.');
             return;
         }
-        dispatch({ type: 'DELETE_BED', payload: { roomId: props.roomId, areaId: id } });
+        dispatch({ type: DELETE_BED, payload: { roomId: props.roomId, areaId: id } });
     }
 
     const isPatient = () => props.name !== "";

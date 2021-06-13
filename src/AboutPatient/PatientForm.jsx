@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Context } from '../Store/Store';
 import styled from './PatientForm.module.scss';
 import CloseIcon from '@material-ui/icons/Close';
+import { SAVE_INFO } from '../Store/constants';
 
 const PatientForm = (props) => {
 
@@ -17,7 +18,7 @@ const PatientForm = (props) => {
     }
     
     const saveInfo = (info) => {
-        dispatch({ type: 'SAVE_INFO', payload: { roomId:  props.roomId, info: info } });
+        dispatch({ type: SAVE_INFO, payload: { roomId:  props.roomId, info: info } });
       }    
 
     const handleInputChange = (event) => {
