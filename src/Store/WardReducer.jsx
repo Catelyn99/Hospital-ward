@@ -1,5 +1,10 @@
 const wardReducer = (state, action) => {
     switch (action.type) {
+        case 'DELETE_ROOM':
+            return {
+                ...state,
+                rooms: state.rooms.filter(room => room.id !== action.payload.id)
+            }
         case 'ADD_BED':
             return {
                 ...state,
@@ -7,11 +12,11 @@ const wardReducer = (state, action) => {
                     if (action.payload.roomId === room.id) {
                         const bed = { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: action.payload.areaId };
 
-                        if(action.payload.areaId > room.areas.length && action.payload.areaId < 11) {
+                        if (action.payload.areaId > room.areas.length && action.payload.areaId < 11) {
                             return {
                                 ...room,
                                 areas: [
-                                    ...room.areas, 
+                                    ...room.areas,
                                     { id: action.payload.areaId, bed }
                                 ]
                             }

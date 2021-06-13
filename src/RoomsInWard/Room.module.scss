@@ -9,11 +9,23 @@
         border-width: 3px;
         border-style: solid;
         font-weight: 500;
+        position: relative;
         font-size: 30px;
         &:hover {
             transition: all 0.3s ease;
             cursor: pointer;
             background-color: whitesmoke;
+        }
+        a {
+            display: block;
+            height: 100%;
+            width: 100%;
+            color: inherit;
+        }
+        .binIcon {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
         }
     }
     
@@ -46,6 +58,8 @@
     @media (max-width: 780px) {
         .room {
             font-size: 18px;
+            height: 188px;
+            margin: 4% 2%;
         }
     }
     
