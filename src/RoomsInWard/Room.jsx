@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../Store/Store';
+import { Link } from 'react-router-dom';
 import style from './Room.module.scss';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 
 const Room = props => {
+
+    const [state, dispatch] = useContext(Context);
 
     const getStyle = () => {
         switch (props.roomType) {
@@ -26,10 +31,17 @@ const Room = props => {
         }
     }
 
+    const deleteRoom = () => {
+        dispatch({ type: 'DELETE_ROOM', payload: { id: props.roomNumber } });
+    }
+
     return (
         <div className={[style.room, getStyle()].join(' ')}>
-            <p>{getHeader()}</p>
-            <p>Stan pacjentów: {props.checkAmountOfPatients}</p>
+            <Link to={`/Hospital-ward/room/${props.roomNumber}`}>
+                <p>{getHeader()}</p>
+                <p>Stan pacjentów: {props.checkAmountOfPatients}</p>
+            </Link>
+            <DeleteForeverIcon className={style.binIcon} onClick={deleteRoom} fontSize="inherit"/>
         </div>
     )
 }
