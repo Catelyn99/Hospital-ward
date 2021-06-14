@@ -39,7 +39,7 @@ const PatientForm = (props) => {
 
     return ReactDOM.createPortal(
         <form className={styled.form} onSubmit={saveForm}>
-            <CloseIcon fontSize="medium" className={styled.closeIcon} onClick={() => props.closePatientInfo(props.patient.id)} />
+            <CloseIcon className={styled.closeIcon} onClick={() => props.closePatientInfo(props.patient.id)} />
             {props.patient.name === "" ?
                     <div className={styled.headerBed}>Dodaj pacjenta - łóżko {props.patient.id}</div> 
                     : <div className={styled.headerBed}>Edytuj pacjenta - łóżko {props.patient.id}</div>}

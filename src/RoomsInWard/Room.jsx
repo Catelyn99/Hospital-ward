@@ -1,14 +1,42 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Context } from '../Store/Store';
 import { Link } from 'react-router-dom';
 import style from './Room.module.scss';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { DELETE_ROOM } from '../Store/constants';
-
+import { blur, unblur } from '../Popup/Blur';
+import RemovePopup from '../Popup/RemovePopup';
 
 const Room = props => {
 
     const [state, dispatch] = useContext(Context);
+
+    const [roomState, setRoomState] = useState({
+        isOpenRemovePopup: false
+    });
+
+    const showPopup = () => {
+        setRoomState({
+            isOpenRemovePopup: true
+        });
+        blur();
+    }
+
+    const closePopup = () => {
+        setRoomState({
+            isOpenRemovePopup: false
+        });
+        unblur();
+    }
+
+    const rejectPopup = () => {
+        closePopup();
+    }
+
+    const acceptPopup = () => {
+        deleteRoom();
+        closePopup();
+    }
 
     const getStyle = () => {
         switch (props.roomType) {
@@ -42,7 +70,13 @@ const Room = props => {
                 <p>{getHeader()}</p>
                 <p>Stan pacjentów: {props.checkAmountOfPatients}</p>
             </Link>
-            <DeleteForeverIcon className={style.binIcon} onClick={deleteRoom} fontSize="inherit"/>
+            <DeleteForeverIcon className={style.binIcon} onClick={showPopup} fontSize="inherit"/>
+            <RemovePopup
+                    name="salę"
+                    isOpen={roomState.isOpenRemovePopup}
+                    onAccept={acceptPopup}
+                    onReject={rejectPopup}
+                />
         </div>
     )
 }
