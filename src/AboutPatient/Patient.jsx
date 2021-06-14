@@ -1,10 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Context } from "../Store/Store";
 import styles from "./Patient.module.scss";
 
 const Patient = (props) => {
 
-  const [state, dispatch] = useContext(Context);
+  const [state] = useContext(Context);
 
   const goBack = () => {
     props.history.goBack()

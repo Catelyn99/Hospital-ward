@@ -34,7 +34,6 @@ const AreasStructure = (props) => {
   const closePatientInfo = (id) => {
     const selectedBed = findRoom().areas.find(element => element.id === id).bed;
     if (bedsState.showPatient === selectedBed) {
-      console.log('hej');
       setBedsState({
         showPatient: null,
         activeBed: null,
