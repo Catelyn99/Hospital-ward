@@ -9,7 +9,7 @@ import PatientForm from '../AboutPatient/PatientForm';
 
 const AreasStructure = (props) => {
 
-  const [state] = useContext(Context);
+  const {state} = useContext(Context);
 
   const [bedsState, setBedsState] = useState({
     showPatient: null,

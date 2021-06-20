@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import { Context } from '../Store/Store';
 import styled from './PatientForm.module.scss';
 import CloseIcon from '@material-ui/icons/Close';
-import { SAVE_INFO } from '../Store/constants';
+import { WardTypes } from '../Models/Action';
 
 const PatientForm = (props) => {
 
-  const [state, dispatch] = useContext(Context);
+  const {state, dispatch} = useContext(Context);
 
     const [formState, setFormState] = useState({
         ...props.patient
@@ -18,7 +18,7 @@ const PatientForm = (props) => {
     }
     
     const saveInfo = (info) => {
-        dispatch({ type: SAVE_INFO, payload: { roomId:  props.roomId, info: info } });
+        dispatch({ type: WardTypes.SaveInfo, payload: { roomId:  props.roomId, info: info } });
       }    
 
     const handleInputChange = (event) => {

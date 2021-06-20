@@ -3,13 +3,13 @@ import { Context } from '../Store/Store';
 import { Link } from 'react-router-dom';
 import style from './Room.module.scss';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { DELETE_ROOM } from '../Store/constants';
 import { blur, unblur } from '../Popup/Blur';
 import RemovePopup from '../Popup/RemovePopup';
+import { WardTypes } from '../Models/Action';
 
 const Room = props => {
 
-    const [state, dispatch] = useContext(Context);
+    const {state, dispatch} = useContext(Context);
 
     const [roomState, setRoomState] = useState({
         isOpenRemovePopup: false
@@ -61,7 +61,7 @@ const Room = props => {
     }
 
     const deleteRoom = () => {
-        dispatch({ type: DELETE_ROOM, payload: { id: props.roomNumber } });
+        dispatch({ type: WardTypes.DeleteRoom, payload: { id: props.roomNumber } });
     }
 
     return (

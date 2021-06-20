@@ -2,14 +2,14 @@ import commonStyles from './Common.module.scss';
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import React, { useContext } from 'react';
 import { Context } from '../Store/Store';
-import { ADD_BED } from '../Store/constants';
+import { WardTypes } from '../Models/Action';
 
 
 const AddBed = (props) => {
-    const [state, dispatch] = useContext(Context);
+    const {state, dispatch} = useContext(Context);
 
     const addBed = (id) => {
-        dispatch({ type: ADD_BED, payload: { roomId:  props.roomId, areaId: id } });
+        dispatch({ type: WardTypes.AddBed, payload: { roomId:  props.roomId, areaId: id } });
       }
 
       if(props.id === 12){

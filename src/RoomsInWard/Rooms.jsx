@@ -5,7 +5,7 @@ import Room from './Room';
 
 const Rooms = () => {
 
-  const [state] = useContext(Context);
+  const {state} = useContext(Context);
 
   const checkAmountOfPatients = (id) =>
       state.rooms.find(room => room.id === id)

@@ -1,18 +1,18 @@
-import { Action, ActionType } from "../Models/Action";
+import { WardActions, WardTypes } from "../Models/Action";
 import { Area } from "../Models/Area";
 import { Bed } from "../Models/Bed";
 import { Room } from "../Models/Room";
 import { State } from "../Models/State";
-import { ADD_BED, DELETE_BED, DELETE_ROOM, MAX_AMOUNT_OF_BEDS, SAVE_INFO } from "./constants";
+import { MAX_AMOUNT_OF_BEDS } from "./constants";
 
-const wardReducer = (state: State, action: Action): State => {
-    switch (action.type as string) {
-        case DELETE_BED:
+const wardReducer = (state: State, action: WardActions): State => {
+    switch (action.type) {
+        case WardTypes.DeleteRoom:
             return {
                 ...state,
                 rooms: state.rooms.filter(room => room.id !== action.payload.id)
             }
-        case ADD_BED:
+        case WardTypes.AddBed:
             return {
                 ...state,
                 rooms: state.rooms.map(room => {
@@ -43,7 +43,7 @@ const wardReducer = (state: State, action: Action): State => {
                     return room;
                 })
             };
-        case DELETE_BED:
+        case WardTypes.DeleteBed:
             return {
                 ...state,
                 rooms: state.rooms.map((room): Room => {
@@ -67,7 +67,7 @@ const wardReducer = (state: State, action: Action): State => {
                     return room;
                 })
             };
-        case SAVE_INFO:
+        case WardTypes.SaveInfo:
             return {
                 ...state,
                 rooms: state.rooms.map((room): Room => {

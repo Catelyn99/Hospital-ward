@@ -1,4 +1,5 @@
-import { createContext, useReducer } from "react";
+import React, { createContext, useReducer } from "react";
+import { WardActions } from "../Models/Action";
 import { Area } from "../Models/Area";
 import { State } from "../Models/State";
 import wardReducer from "./WardReducer";
@@ -65,14 +66,23 @@ const initialState: State = {
     }]
 };
 
-const Store = ({ children }) => {
+const Context = createContext<{
+  state: State;
+  dispatch: React.Dispatch<WardActions>
+}>({
+  state: initialState,
+  dispatch: () => null
+});
+
+const Store = ({ children } : any) => {
   const [state, dispatch] = useReducer(wardReducer, initialState);
+
   return (
-    <Context.Provider value={[state, dispatch] as any}>
+    <Context.Provider value={{state, dispatch}}>
       {children}
     </Context.Provider>
   );
 };
 
-export const Context = createContext(initialState);
+export { Context };
 export default Store;

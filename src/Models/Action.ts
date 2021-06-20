@@ -1,14 +1,21 @@
-import { ADD_BED, DELETE_BED, DELETE_ROOM, SAVE_INFO } from "../Store/constants";
+import { Bed } from "./Bed";
 
-export enum ActionType {
+type ActionMap<M extends { [index: string]: any }> = {
+    [Key in keyof M]: M[Key] extends undefined
+    ? {
+        type: Key;
+    }
+    : {
+        type: Key;
+        payload: M[Key];
+    }
+};
+
+export enum WardTypes {
     AddBed = 'ADD_BED',
     DeleteBed = 'DELETE_BED',
     DeleteRoom = 'DELETE_ROOM',
     SaveInfo = 'SAVE_INFO'
-}
-
-interface DeleteRoomPayload {
-    id: number;
 }
 
 interface BedPayload {
@@ -16,7 +23,16 @@ interface BedPayload {
     areaId: number;
 }
 
-export interface Action {
-    type: ActionType;
-    payload: BedPayload | DeleteRoomPayload
+type WardPayload = {
+    [WardTypes.AddBed]: BedPayload;
+    [WardTypes.DeleteBed]: BedPayload;
+    [WardTypes.DeleteRoom]: {
+        id: number;
+    };
+    [WardTypes.SaveInfo]: {
+        info: Bed;
+        roomId: number;
+    };
 }
+
+export type WardActions = ActionMap<WardPayload>[keyof ActionMap<WardPayload>];
