@@ -1,18 +1,23 @@
-import { ADD_BED, DELETE_BED, DELETE_ROOM, MAX_AMOUNT_OF_BEDS, SAVE_INFO } from "./constants";
+import { WardActions, WardTypes } from "../Models/Action";
+import { Area } from "../Models/Area";
+import { Bed } from "../Models/Bed";
+import { Room } from "../Models/Room";
+import { State } from "../Models/State";
+import { MAX_AMOUNT_OF_BEDS } from "./constants";
 
-const wardReducer = (state, action) => {
+const wardReducer = (state: State, action: WardActions): State => {
     switch (action.type) {
-        case DELETE_ROOM:
+        case WardTypes.DeleteRoom:
             return {
                 ...state,
                 rooms: state.rooms.filter(room => room.id !== action.payload.id)
             }
-        case ADD_BED:
+        case WardTypes.AddBed:
             return {
                 ...state,
                 rooms: state.rooms.map(room => {
                     if (action.payload.roomId === room.id) {
-                        const bed = { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: action.payload.areaId };
+                        const bed: Bed = { name: "", age: "", diagnosis: "", comments: "", tasks: "", id: action.payload.areaId };
 
                         if (action.payload.areaId > room.areas.length && action.payload.areaId < MAX_AMOUNT_OF_BEDS) {
                             return {
@@ -38,10 +43,10 @@ const wardReducer = (state, action) => {
                     return room;
                 })
             };
-        case DELETE_BED:
+        case WardTypes.DeleteBed:
             return {
                 ...state,
-                rooms: state.rooms.map(room => {
+                rooms: state.rooms.map((room): Room => {
                     if (action.payload.roomId === room.id) {
                         if (room.areas.filter(area => area.bed !== null).length === 1) {
                             alert('Przepraszamy, na sali musi pozostać 1 łóżko.');
@@ -62,14 +67,14 @@ const wardReducer = (state, action) => {
                     return room;
                 })
             };
-        case SAVE_INFO:
+        case WardTypes.SaveInfo:
             return {
                 ...state,
-                rooms: state.rooms.map(room => {
+                rooms: state.rooms.map((room): Room => {
                     if (action.payload.roomId === room.id) {
                         return {
                             ...room,
-                            areas: room.areas.map(area => {
+                            areas: room.areas.map((area): Area => {
                                 if (area.id === action.payload.info.id) {
                                     return { ...area, bed: action.payload.info };
                                 }
