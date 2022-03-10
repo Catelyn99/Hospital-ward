@@ -13,6 +13,7 @@ type ActionMap<M extends { [index: string]: any }> = {
 
 export enum WardTypes {
     AddBed = 'ADD_BED',
+    AddRoom = 'ADD_ROOM',
     DeleteBed = 'DELETE_BED',
     DeleteRoom = 'DELETE_ROOM',
     SaveInfo = 'SAVE_INFO'
@@ -23,8 +24,14 @@ interface BedPayload {
     areaId: number;
 }
 
+interface AddRoomPayload {
+    roomId: number;
+    type: string;
+}
+
 type WardPayload = {
     [WardTypes.AddBed]: BedPayload;
+    [WardTypes.AddRoom]: AddRoomPayload;
     [WardTypes.DeleteBed]: BedPayload;
     [WardTypes.DeleteRoom]: {
         id: number;

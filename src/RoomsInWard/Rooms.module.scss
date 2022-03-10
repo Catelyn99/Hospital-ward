@@ -1,18 +1,18 @@
 .container {
-    overflow: hidden;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
 }
 
 @media (max-width: 920px) {
-    .roomContainer {
-        flex: 0 0 50%;
-    }
+  .roomContainer {
+    flex: 0 0 50%;
+  }
 }
 
 @media (max-width: 768px) {
-    .roomContainer {
-        flex: 0 0 100%;
-    }
+  .roomContainer {
+    flex: 0 0 100%;
+  }
 }
