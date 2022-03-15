@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { WardTypes } from "../Models/Action";
 import { Context } from "../Store/Store";
+import styles from "./AddRoomPopup.module.scss";
+import CloseIcon from "@material-ui/icons/Close";
 
 const AddRoomPopup = ({ closePopup, isOpen }) => {
   const { dispatch } = useContext(Context);
@@ -34,28 +36,42 @@ const AddRoomPopup = ({ closePopup, isOpen }) => {
   }
 
   return (
-    <form>
-      <input
-        onChange={handleInputChange}
-        name="type"
-        value="isolation"
-        type="radio"
-      />
-      <input
-        onChange={handleInputChange}
-        name="type"
-        value="normal"
-        type="radio"
-      />
-      <input
-        onChange={handleInputChange}
-        name="type"
-        value="intensive"
-        type="radio"
-      />
+    <form className={styles.popup}>
+      <CloseIcon onClick={closePopup} className={styles.closeIcon} />
+      <h2 className={styles.text}>Wybierz pokój: </h2>
+      <div>
+        <input
+          onChange={handleInputChange}
+          name="type"
+          id="isolation"
+          value="isolation"
+          type="radio"
+        />
+        <label for="isolation">Izolatka</label>
+      </div>
+      <div>
+        <input
+          onChange={handleInputChange}
+          name="type"
+          id="normal"
+          value="normal"
+          type="radio"
+        />
+        <label for="normal">Normalny</label>
+      </div>
+      <div>
+        <input
+          onChange={handleInputChange}
+          name="type"
+          id="intensive"
+          value="intensive"
+          type="radio"
+        />
+        <label for="intensive">Intensywnej opieki</label>
+      </div>
 
-      <button onClick={addRoom} type="submit">
-        #
+      <button onClick={addRoom} className={styles.addButton} type="submit">
+        ADD ROOM
       </button>
     </form>
   );

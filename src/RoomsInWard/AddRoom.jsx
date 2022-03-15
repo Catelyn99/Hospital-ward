@@ -1,7 +1,7 @@
 import { useState } from "react";
 import style from "./AddRoom.module.scss";
 import AddRoomPopup from "../Popup/AddRoomPopup";
-// import { blur, unblur } from "../Popup/Blur";
+import AddBoxIcon from "@material-ui/icons/AddBox";
 
 const AddRoom = () => {
   const [roomPopupState, setRoomPopupState] = useState({
@@ -12,21 +12,17 @@ const AddRoom = () => {
     setRoomPopupState({
       isOpen: true,
     });
-    // blur();
   };
 
   const closePopup = () => {
     setRoomPopupState({
       isOpen: false,
     });
-    // unblur();
   };
 
   return (
     <>
-      <button onClick={openPopup} className={style.addButton}>
-        DODAJ SALĘ
-      </button>
+      <AddBoxIcon onClick={openPopup} className={style.addButton} />
       <AddRoomPopup isOpen={roomPopupState.isOpen} closePopup={closePopup} />
     </>
   );
