@@ -11,14 +11,25 @@ const AddRoomPopup = ({ closePopup, isOpen }) => {
     type: null,
   });
 
+  const cancelPopup = () => {
+    closePopup();
+    setRoomFormState({
+      type: null
+    });
+  }
+
   const addRoom = () => {
+    if (roomFormState.type === null){
+      alert("Wybierz typ, aby dodać nową salę.");
+      return;
+    }
     dispatch({
       type: WardTypes.AddRoom,
       payload: {
         type: roomFormState.type,
       },
     });
-    closePopup();
+    cancelPopup();
   };
 
   const handleInputChange = (event) => {
@@ -37,7 +48,7 @@ const AddRoomPopup = ({ closePopup, isOpen }) => {
 
   return (
     <form className={styles.popup}>
-      <CloseIcon onClick={closePopup} className={styles.closeIcon} />
+      <CloseIcon onClick={cancelPopup} className={styles.closeIcon} />
       <h2 className={styles.text}>Wybierz pokój: </h2>
       <div>
         <input
@@ -70,7 +81,7 @@ const AddRoomPopup = ({ closePopup, isOpen }) => {
         <label for="intensive">Intensywnej opieki</label>
       </div>
 
-      <button onClick={addRoom} className={styles.addButton} type="submit">
+      <button onClick={addRoom} className={styles.addButton} type="button">
         ADD ROOM
       </button>
     </form>
