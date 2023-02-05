@@ -3,25 +3,30 @@ import { Context } from "../Store/Store";
 import styles from "./Patient.module.scss";
 
 const Patient = (props) => {
-
-  const {state} = useContext(Context);
+  const { state } = useContext(Context);
 
   const goBack = () => {
-    props.history.goBack()
-  }
+    props.history.goBack();
+  };
 
-  const url = props.match.url.split('/');
+  const url = props.match.url.split("/");
   const roomId = Number(url[3]);
   const areaId = Number(props.match.params.id);
-  const patient = state.rooms.find(room => room.id === roomId).areas.find(area => area.id === areaId).bed;
+  const patient = state.rooms
+    .find((room) => room.id === roomId)
+    .areas.find((area) => area.id === areaId).bed;
 
   return (
     <>
       <div className={styles.bedName}>
-        <span className={styles.bedNameText}>POKÓJ {roomId} - ŁÓŻKO {areaId}</span>
+        <span className={styles.bedNameText}>
+          POKÓJ {roomId} - ŁÓŻKO {areaId}
+        </span>
       </div>
       <nav className={styles.navigation}>
-        <button className={`${styles.navItem} ${styles.back}`} onClick={goBack}>Powrót</button>
+        <button className={`${styles.navItem} ${styles.back}`} onClick={goBack}>
+          Powrót
+        </button>
         <div className={styles.navItem}>Edytuj</div>
         <div className={styles.navItem}>Wskazówki</div>
         <div className={styles.navItem}>Historia</div>
@@ -34,6 +39,10 @@ const Patient = (props) => {
         <div>
           <h2>Wiek:</h2>
           <span className={styles.inInfo}>{patient.age}</span>
+        </div>
+        <div>
+          <h2>Numer księgi:</h2>
+          <span className={styles.inInfo}>{patient.bookNumber}</span>
         </div>
         <div>
           <h2>Diagnoza:</h2>
@@ -49,7 +58,7 @@ const Patient = (props) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Patient;

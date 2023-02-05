@@ -1,0 +1,36 @@
+.popup {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 30px 30px white;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 50%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+
+  .text {
+    margin: 0;
+  }
+  .closeIcon {
+    position: absolute;
+    color: red;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+  }
+  .addButton {
+    width: 40%;
+    margin: 0 auto;
+    margin-right: 0;
+    background: #df70e9;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 10px;
+    cursor: pointer;
+  }
+}

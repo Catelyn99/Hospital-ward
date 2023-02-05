@@ -5,4 +5,5 @@ export interface Room {
     type: string;
     amount: number;
     areas: Array<Area>;
+    active: boolean;
 }
