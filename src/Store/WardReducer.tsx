@@ -10,14 +10,32 @@ const wardReducer = (state: State, action: WardActions): State => {
     case WardTypes.DeleteRoom:
       return {
         ...state,
-        rooms: state.rooms.filter((room) => room.id !== action.payload.id),
+        rooms: state.rooms.map((room) => {
+          if(room.id === action.payload.id) {
+            return {...room, areas: [], active: false};
+          };
+          return room;
+        })
       };
+
+    case WardTypes.ActivateRoom:
+      return {
+        ...state,
+        rooms: state.rooms.map(room => {
+        if(room.id === action.payload.id) {
+          return {...room, active: true};
+        };
+        return room;
+      })
+    };
+
     case WardTypes.AddRoom:
       const room: Room = {
         amount: 0,
         areas: [],
         id: state.rooms[state.rooms.length - 1].id + 1,
         type: action.payload.type,
+        active: true
       };
 
       return {

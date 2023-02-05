@@ -22,47 +22,56 @@ const initialState: State = {
       id: 1,
       type: 'isolation',
       amount: 1,
-      areas: setAreas(1)
+      areas: setAreas(1),
+      active: true
     }, {
       id: 2,
       type: 'intensive',
       amount: 2,
-      areas: setAreas(2)
+      areas: setAreas(2),
+      active: true
     }, {
       id: 3,
       type: 'normal',
       amount: 3,
-      areas: setAreas(3)
+      areas: setAreas(3),
+      active: true
     }, {
       id: 4,
       type: 'normal',
       amount: 3,
-      areas: setAreas(3)
+      areas: setAreas(3),
+      active: true
     }, {
       id: 5,
       type: 'normal',
       amount: 3,
-      areas: setAreas(3)
+      areas: setAreas(3),
+      active: true
     }, {
       id: 6,
       type: 'normal',
       amount: 3,
-      areas: setAreas(3)
+      areas: setAreas(3),
+      active: true
     }, {
       id: 7,
       type: 'normal',
       amount: 3,
-      areas: setAreas(3)
+      areas: setAreas(3),
+      active: true
     }, {
       id: 8,
       type: 'normal',
       amount: 3,
-      areas: setAreas(3)
+      areas: setAreas(3),
+      active: true
     }, {
       id: 9,
       type: 'normal',
       amount: 3,
-      areas: setAreas(3)
+      areas: setAreas(3),
+      active: true
     }]
 };
 

@@ -1,9 +1,10 @@
     $primary-color: rgb(139, 183, 209);
     $isolation-color: rgb(9, 255, 0);
     $intensive-color: rgb(235, 35, 35);
+    $unactive-color: rgb(106, 104, 104);
     .room {
         height: 260px;
-        margin: 10% 2%;
+        padding: 10px;
         border-radius: 6px;
         text-align: center;
         border-width: 3px;
@@ -46,21 +47,11 @@
         border-color: $isolation-color;
         color: rgb(5, 66, 5);
     }
-    
-    @media (max-width: 410px) {
-        .room {
-            margin-left: 0;
-            margin-right: 0;
-            font-size: 16px;
-        }
-    }
-    
-    @media (max-width: 780px) {
-        .room {
-            font-size: 18px;
-            height: 188px;
-            margin: 4% 2%;
-        }
+
+    .unactive {
+        border-color: $unactive-color;
+        background-color: whitesmoke;
+        color: $unactive-color;
     }
     
     @media (max-width: 920px) {
@@ -68,3 +59,14 @@
             font-size: 25px;
         }
     }
+
+    @media (max-width: 780px) {
+        .room {
+            height: 188px;
+            width: 100%;
+        }
+    }
+
+    
+
+    

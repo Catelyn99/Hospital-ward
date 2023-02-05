@@ -18,13 +18,14 @@ const Rooms = () => {
       <AddRoom />
       {state.rooms.map((room) => {
         return (
-          <div key={room.id} className={styles.roomContainer}>
+          <React.Fragment key={room.id}>
             <Room
               roomNumber={room.id}
               roomType={room.type}
+              roomActive={room.active}
               checkAmountOfPatients={checkAmountOfPatients(room.id)}
             />
-          </div>
+          </React.Fragment>
         );
       })}
     </div>

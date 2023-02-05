@@ -62,26 +62,38 @@ const Room = (props) => {
   const deleteRoom = () => {
     dispatch({ type: WardTypes.DeleteRoom, payload: { id: props.roomNumber } });
   };
+  const activateRoom = () => {
+    dispatch({ type: WardTypes.ActivateRoom, payload: { id: props.roomNumber } });
+  };
 
-  return (
-    <div className={[style.room, getStyle()].join(" ")}>
-      <Link to={`/Hospital-ward/room/${props.roomNumber}`}>
-        <p>{getHeader()}</p>
-        <p>Stan pacjentów: {props.checkAmountOfPatients}</p>
-      </Link>
-      <DeleteForeverIcon
-        className={style.binIcon}
-        onClick={showPopup}
-        fontSize="inherit"
-      />
-      <RemovePopup
-        name="salę"
-        isOpen={roomState.isOpenRemovePopup}
-        onAccept={acceptPopup}
-        onReject={rejectPopup}
-      />
+  if (props.roomActive) {
+    return (
+      <div className={[style.room, getStyle()].join(" ")}>
+        <Link to={`/Hospital-ward/room/${props.roomNumber}`}>
+          <p>{getHeader()}</p>
+          <p>Stan pacjentów: {props.checkAmountOfPatients}</p>
+        </Link>
+        <DeleteForeverIcon
+          className={style.binIcon}
+          onClick={showPopup}
+          fontSize="inherit"
+        />
+        <RemovePopup
+          name="salę"
+          isOpen={roomState.isOpenRemovePopup}
+          onAccept={acceptPopup}
+          onReject={rejectPopup}
+        />
+      </div>
+    );
+  } else {
+    return (
+    <div className={[style.room, style.unactive, getStyle()].join(" ")} onClick={activateRoom}>
+    <p>{getHeader()}</p>
+    <p>Kliknij, aby <br/> aktywować salę</p>
     </div>
-  );
+    );
+  }
 };
 
 export default Room;
